@@ -1,0 +1,639 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+header{
+    margin-top: 0;
+    background-color: rgba(20, 20, 20, 0.8);
+    height: 80px;
+    background-repeat: no-repeat;
+}
+
+header::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.mainpage {
+    background-image: url("../images/BackgroundMainPage.png");
+    background-size:cover;
+    background-repeat: no-repeat;
+    min-height: 1080px;
+    overflow: hidden;
+}
+
+
+.logo{
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+}
+
+nav ul{
+    margin: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    list-style: none;
+    font-family: "Roboto", sans-serif;
+}
+
+nav li{
+    display: inline-block;
+    margin-left: 70px;
+    padding-top: 25px;
+    position: relative;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav a:hover{
+    color: lightslategray;
+}
+
+nav a::before{
+    content: "";
+    display: block;
+    height: 5px;
+    width: 100%;
+    background-color: lightslategray;
+    position: absolute;
+    top: 0;
+    width: 0;
+    transition: all ease-in 250ms;
+}
+
+nav a:hover::before{
+    width: 100%;
+}
+
+.introduction{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 6%;
+}
+
+.introduction h1{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-weight: bold;
+    font-style: oblique;
+    font-size: 60px;
+    line-height: 5%;
+}
+
+.introduction h3{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-weight: bold;
+    font-style: oblique;
+    font-size: 20px;
+    line-height: 5%;
+}
+
+.introduction button{
+    width: 200px;
+    height: 60px;
+    background: none;
+    border: 4px solid;
+    color: #3498db;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+}
+
+.introduction button::before, .introduction button::after{
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 4px;
+    background: rgb(20, 20, 20, 0.8);
+    transform: skewX(50deg);
+    transition: .4s linear;
+}
+
+.introduction button::before{
+    top: -4px;
+    left: 10%;
+}
+
+.introduction button::after{
+    bottom: -4px;
+    right: 10%;
+}
+
+.introduction button:hover:before{
+    left: 80%;
+}
+
+.introduction button:hover:after{
+    right: 80%;
+}
+
+.quote{
+    width: 100%;
+    height: 400px;
+}
+
+.quote{
+    background-image: url(../images/wood.jpg);
+    background-size: cover;
+    text-align: center;
+    height: 300px;
+}
+
+.quote q {
+    font-family: "Roboto Thin italic";
+    font-style: italic;
+    color: white;
+    font-size: 24px;
+    padding-top: 100px;
+    display: inline-block;
+}
+
+.quote h4{
+    font-family: "Roboto Thin italic";
+    font-style: italic;
+    color: white;
+    font-size: 21px;
+    padding-top: 10px;
+}
+
+.explanation{
+    text-align: center;
+
+    width: 60%;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  	
+    margin: auto;
+}
+
+.explanation p{
+    font-family: 'Roboto Regular', 'Roboto', sans-serif;;
+    font-weight: 400;
+    font-style: oblique;
+    font-size: 20px;
+    padding: 0;
+}
+
+.explanation h1{
+    font-family: 'Roboto Medium', 'Roboto Regular', 'Roboto', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 24px;
+}
+
+footer{
+    background-color: rgb(20, 20, 20, 0.8);
+    height: 100px;
+    width: 100%;
+    margin-top: 100px;
+    overflow: hidden;
+}
+
+.ipslogo{
+    padding-top: 5px;
+    padding-left: 30px;
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    float: left;
+}
+
+footer address{
+    padding-top: 30px;
+    float: left;
+    font-size: 15px;
+    padding-left: 30px;
+    color: white;
+    font-family: "Roboto Thin italic";
+    font-style: italic;
+}
+
+.facebook{
+    width: 50px;
+    height: 50px;
+    padding-right: 30px;
+    padding-top: 30px;
+    float: right;
+}
+
+.twitter{
+    width: 40px;
+    height: 40px;
+    float: right;
+    padding-top: 35px;
+    padding-right: 15px;
+}
+
+.definitionImage{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.flags{
+    width: 50px;
+    height: 50px;
+    float: left;
+    padding-top: 40px;
+    padding-left: 40px;
+}
+
+.internacional{
+    width: 80%;
+	top:0;
+	bottom: 0;
+	left: 0;
+    right: 0;
+    
+  	
+    margin: auto;
+    text-align: justify;
+}
+
+.internacional h2{
+    font-family: 'Roboto Light', 'Roboto', sans-serif;
+    font-weight: 300;
+    float: left;
+    padding-top: 32px;
+    padding-left: 25px;
+}
+
+.internacional p{
+    float: left;
+    font-family: 'Roboto Light', 'Roboto', sans-serif;
+    padding-left: 40px;
+    font-size: 18px;
+}
+
+.universities{
+    width: 80%;
+	top:0;
+	bottom: 0;
+	left: 0;
+    right: 0;
+    
+  	
+    margin: auto;
+    text-align: justify;
+}
+
+.universities p{
+    font-family: 'Roboto Light', 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    padding-top: 35px;
+}
+
+.universities img{
+    float: left;
+}
+
+.universities h2{
+    font-family: 'Roboto Light', 'Roboto', sans-serif;
+    padding-top: 35px;
+    margin: 0;
+    padding-bottom: 20px;
+    padding-left: 120px;
+    font-weight: 300;
+}
+
+.universities article{
+    float: left;
+    padding-top: 50px;
+}
+
+.labelResponsive{
+    margin: 0 40px 0 0;
+    font-size: 26px;
+    line-height: 70px;
+    float: right;
+    display: none;
+    color: white;
+    border-bottom: 1px solid #EAEAEB;
+}
+
+#toggle{
+    display: none;
+}
+
+.tech h1{
+    font-family: 'Roboto Light', 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.tech h2{
+    font-family: 'Roboto', 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.tech a{
+    color: inherit;
+    border-bottom: 2px solid #1F40E6;
+    text-decoration: none;
+    transition: 120ms linear;
+    transition-property: background-color, color;
+}
+
+.tech{
+    width: 70%;
+	top:0;
+	bottom: 0;
+	left: 0;
+    right: 0;
+    
+      
+    padding-top: 40px;
+    margin: auto;
+    text-align: left;
+}
+
+.tech p{
+    font-family: 'Roboto Light', 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.tech img{
+    width: 100%;
+    height: auto;
+}
+
+.about{
+    width: 80%;
+	top:0;
+	bottom: 0;
+	left: 0;
+    right: 0;
+    
+      
+    padding-top: 40px;
+    margin: auto;
+    text-align: left;
+}
+
+.about h1{
+    font-family: 'Roboto Light', 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 27px;
+}
+
+.about p{
+    font-family: 'Roboto Light', 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.us{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.us p{
+    padding-right: 50px;
+}
+
+.about img{
+    width: 20%;
+    height: auto;
+    object-fit: contain;
+}
+
+.uni{
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.uni p{
+    text-align: right;
+    padding-left: 50px;
+}
+
+.uni h1{
+    text-align: right;
+}
+
+.campus img{
+    width: 100%;
+    height: auto;
+}
+
+.campus{
+    flex: 1 0 25em;
+}
+
+.contact-form{
+    text-align: center;
+
+    font-family: 'Roboto Light', 'Roboto', sans-serif;
+    font-weight: 400;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 40px; 
+}
+
+.input-fields{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.input-fields input{
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.input-fields > *{
+    margin-bottom: 15px;
+}
+
+
+.input-fields label{
+    margin-right: auto;
+}
+
+.message{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.message > *{
+    margin-bottom: 15px;
+}
+
+.message label{
+   margin-right: auto;
+}
+
+.message textarea{
+    resize: none;
+}
+
+.message button{
+    border: 1px solid #3498db;
+    background: none;
+
+    font-family: 'Roboto Light', 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: black;
+
+    padding: 10px 20px;
+
+    cursor: pointer;
+
+    position: relative;
+    transition: 0.8s;
+}
+
+.message button:hover{
+    color: white;
+    border: 1px solid black;
+}
+
+.message button:hover::before{
+    height: 100%;
+}
+
+
+.message button:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: #3498db;
+    z-index: -1;
+
+    transition: 0.8s;
+
+    bottom: 0;
+}
+
+input:focus{
+    outline: none;
+
+    border-bottom: 1px solid blue;
+}
+
+
+@media only screen and (max-width: 1150px){
+    .labelResponsive{
+        display: block;
+        cursor: pointer;
+        position: relative;
+        z-index: 41;
+    }
+
+    .logo{
+        position: relative;
+        z-index: 40;
+    }
+
+    nav li{
+        text-align: center;
+        width: 100%;
+        display: none;
+        margin: 0;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+    }
+
+    nav a{
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+
+    nav ul{
+        background-color: rgba(20, 20, 20, 1);
+        margin: 0px;
+        padding-top: 80px;
+        width: 100%;
+        padding-left: 0px;
+        position: relative;
+        z-index: 39;
+    }
+
+    .mainPage{
+        height: 100%;
+    }
+
+    input[type="checkbox"]:checked + nav li{
+        display: block;
+    }
+
+    .us{
+        display: block;
+        text-align: center;
+    }
+
+    .us p{
+        padding: 0;
+    }
+
+    .uni{
+        display: block;
+    }
+
+    .uni h1{
+        text-align: center;
+    }
+
+    .uni p{
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .uni{
+        text-align: center;
+    }
+
+    .campus img{
+        width: 70%;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .introduction h1{
+        font-size: 45px;
+    }
+
+    address{
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
