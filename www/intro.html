@@ -10,14 +10,14 @@
 </head>
 <body class = "mainpage">
     <header>
-        <a href="LandingPage.html">
+        <a onclick="showMainPage()">
             <img src="images/MainIcon.png" alt="Logo" class = "logo" height="60" width="60">
         </a>
         <label for="toggle" class="labelResponsive">&#9776;</label>
         <input type="checkbox" id="toggle">
         <nav class="menu">
             <ul>
-                <li><a href="Definition.html">Sustainability</a></li>
+                <li><a onclick="showDefinition()">Sustainability</a></li>
                 <li><a href="Internacional.html">Internacional Objectives</a></li>
                 <li><a href="Universities.html">Universities</a></li>
                 <li><a href="Technologies.html">Technologies</a></li>
@@ -28,9 +28,33 @@
     <main class = "introduction">
         <h1>Sustainability</h1>
         <h3>A simple explanation</h3>
-        <a href="Definition.html">
-            <button>Learn More</button>
+        <a>
+            <button onclick="showDefinition()">Learn More</button>
         </a>
+    </main>
+
+    <main class = "definition">
+        <article class = "quote">
+            <br>
+            <q>Reducing our levels of consumption will not be a sacrifice but a bonus if we simply redefine the meaning of the word success.</q>
+            <br>
+            <h4>David Wann</h4>
+        </article>
+        <article class = "explanation">
+            <h1>What is sustainability?</h1>
+            <p>Sustainability focuses on meeting the needs of the present without compromising the ability of future generations to meet their needs. 
+                <br>
+                In this way, we can say that resources exploitation, manufacturing operations, the direction of investments, technological developments, wealth distribution, institutional changes, among others, are being sustainable if they don’t hurt the ecosystem services and if they allow for society’s quality of life not to decrease.
+            </p>
+    
+            <img src="images/DefinitionImage.png" alt="Definition" class="definitionImage">
+    
+            <h1>Why is it important?</h1>
+            <p>Sustainability is important for a very simple, very straightforward reason: we cannot maintain our quality of life as human beings, the diversity of life on Earth, or Earth’s ecosystems unless we embrace it. There are indications from all quarters and from the smallest to the largest scale that sustainability is something we must address. We will run out of fossil fuels. Thousands if not millions of animal species will become extinct. We will run out of lumber. We will damage the atmosphere beyond repair… If we don’t change.
+
+                And the root of that change lies in understanding and striving for sustainability—in our own homes, in our communities, in our ecosystems, and around the world.
+            </p>
+        </article>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha256-ABrLsV2caVEMCBfm3eNhv/CYQG+tGCqzw2f4b/Pag0M=" crossorigin="anonymous"></script>

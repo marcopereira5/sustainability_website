@@ -162,6 +162,10 @@ nav a:hover::before{
     display: inline-block;
 }
 
+.definition{
+    display: none;
+}
+
 .quote h4{
     font-family: "Roboto Thin italic";
     font-style: italic;
