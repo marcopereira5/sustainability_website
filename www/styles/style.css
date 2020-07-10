@@ -28,9 +28,22 @@ header::after{
 
 .logo{
     float: left;
+    box-sizing: inherit;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 50px;
+}
+
+.logo::after{
+    box-sizing: initial;
+}
+
+.logo::before{
+    box-sizing: initial;
+}
+
+.logo, ::after, ::before{
+    box-sizing: initial;
 }
 
 nav ul{
@@ -48,7 +61,7 @@ nav li{
     position: relative;
 }
 
-nav a {
+#menu ul li a {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
@@ -543,6 +556,23 @@ input:focus{
     border-bottom: 1px solid blue;
 }
 
+#register{
+    margin-top: 4%;
+    width: 100%;
+}
+
+#fields{
+    width: 40%;
+    margin: 0 auto;
+}
+
+#menu{
+    font-size: 16px;
+}
+
+#login_f{
+    margin-top: 10%;
+}
 
 @media only screen and (max-width: 1150px){
     .labelResponsive{

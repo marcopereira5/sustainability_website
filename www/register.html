@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="shortcut icon" href="images/MainIcon.png">
+
+    <script src="scripts/user.js"></script>
+    <script src="scripts/information.js"></script>
+    <script src="scripts/main.js"></script>
+    
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <a href="/">
+            <img src="images/MainIcon.png" alt="Logo" class = "logo" height="60" width="60">
+        </a>
+        <label for="toggle" class="labelResponsive">&#9776;</label>
+        <input type="checkbox" id="toggle">
+        <nav id="menu">
+            <ul>
+                <li><a href="/">Sustainability</a></li>
+                <li><a href="Internacional.html">Internacional Objectives</a></li>
+                <li><a href="Universities.html">Universities</a></li>
+                <li><a href="Technologies.html">Technologies</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <form class="form-horizontal" id="register">
+        <fieldset id="fields">
+          <div id="legend">
+            <legend class="">Register</legend>
+          </div>
+          <div class="control-group">
+            <label class="control-label"  for="username">Username</label>
+            <div class="controls">
+              <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+              <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+            </div>
+          </div>
+       
+          <div class="control-group">
+            <label class="control-label" for="email">E-mail</label>
+            <div class="controls">
+              <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+              <p class="help-block">Please provide your E-mail</p>
+            </div>
+          </div>
+       
+          <div class="control-group">
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+              <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+              <p class="help-block">Password should be at least 4 characters</p>
+            </div>
+          </div>
+       
+          <div class="control-group">
+            <div class="controls">
+              <button type="button" class="btn" onclick="javascript:info.processAddUser()">Register</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+</body>
+</html>

@@ -3,6 +3,6 @@
         "port": 8081
     },
     "mongoDB": {
-        "connectionString": "mongodb://192.168.1.15:27017/Project"
+        "connectionString": "mongodb://127.0.0.1:27017/Project"
     }
 }

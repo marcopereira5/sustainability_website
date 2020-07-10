@@ -8,14 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body class = "mainpage">
+<body class = "mainpage" onscroll="showDefinition()">
     <header>
         <a onclick="showMainPage()">
             <img src="images/MainIcon.png" alt="Logo" class = "logo" height="60" width="60">
         </a>
         <label for="toggle" class="labelResponsive">&#9776;</label>
         <input type="checkbox" id="toggle">
-        <nav class="menu">
+        <nav class="menu" id="menu">
             <ul>
                 <li><a onclick="showDefinition()">Sustainability</a></li>
                 <li><a href="Internacional.html">Internacional Objectives</a></li>
@@ -55,10 +55,25 @@
                 And the root of that change lies in understanding and striving for sustainability—in our own homes, in our communities, in our ecosystems, and around the world.
             </p>
         </article>
+
+        <footer>
+            <img src="images/IPSImage.png" alt="ips" class = "ipslogo">
+            <address>
+                Campus do IPS - Estefanilha <br/>
+                Edifício Sede <br/>
+                2910-761 Setúbal <br/>
+            </address>
+            <a href="https://www.facebook.com/ipsetubal/" target="_blank"><img src="images/facebook.png" alt="facebook" class="facebook"></a>
+            <a href="https://twitter.com/IPSsetubal" target="_blank"><img src="images/twitter.png" alt="twitter" class = "twitter"></a>
+        </footer>
     </main>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha256-ABrLsV2caVEMCBfm3eNhv/CYQG+tGCqzw2f4b/Pag0M=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha256-v/YsEqWkVsiNHryCWg+vjC/eDBakMAgOsCJRa0kNPOg=" crossorigin="anonymous"></script>
     <script src="scripts/landing_script.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/information.js"></script>
+    <script src="scripts/user.js"></script>
 </body>
 </html>
