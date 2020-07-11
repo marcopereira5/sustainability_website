@@ -9,6 +9,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 const information_aux = require("./www/scripts/information");
 const initializePassport = require('./passport_config');
+const transporter = require('./mail_config');
 
 initializePassport(passport, username => {
     information_aux.getUsers.find(user => user.username === username),
