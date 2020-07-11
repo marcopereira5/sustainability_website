@@ -18,10 +18,10 @@
         <nav class="menu" id="menu">
             <ul>
                 <li><a onclick="showDefinition()">Sustainability</a></li>
-                <li><a href="Internacional.html">Internacional Objectives</a></li>
-                <li><a href="Universities.html">Universities</a></li>
-                <li><a href="Technologies.html">Technologies</a></li>
-                <li><a href="about_us.html">About Us</a></li>
+                <li><a onclick="showInternational()">Internacional Objectives</a></li>
+                <li><a onclick="showUni()">Universities</a></li>
+                <li><a onclick="showTech()">Technologies</a></li>
+                <li><a onclick="showAbout()">About Us</a></li>
             </ul>
         </nav>
     </header>
@@ -67,8 +67,195 @@
             <a href="https://twitter.com/IPSsetubal" target="_blank"><img src="images/twitter.png" alt="twitter" class = "twitter"></a>
         </footer>
     </main>
-    
+    <main class="about">
+        <section class = "us">
+            <section>
+                <h1>About us</h1>
+                <p>Our names are Marco and Afonso. We are two students taking a degree in software engineering on Polytechnic Institute of 
+                    Setúbal. We are making this website for the curricular unit of IP (Internet Programming). This website was really
+                    our first website ever and was about a really important topic to us. Sustainability will be a very important
+                    topic to discuss in the upcoming years as we grow as a population and continue to exponentially fall short of resources.
+                    Our objective with this website was to give a simple explanation about Sustainability and help understand what some
+                    countries and universities are doing to help achieve this.
+                </p>
+            </section>
+            <img src="images/marco.jpg" alt="marco">
+            <img src="images/afonso.jpg" alt="afonso">
+        </section>
 
+        <section class="uni">
+            <section>
+                <h1>Our University</h1>
+                <p>IPS is situated in the Greater Lisbon Metropolitan Area, region of Setúbal. The region is home to strong enterprises in such fields as, for example, paper and motor car industries, and holds a highly important geostrategic position, since it is a gateway to Europe. Furthermore, Setúbal region, with its varied landscape composed of sea and mountains, including a large protected area with an application in progress to UNESCO Human Heritage, is a tourist destination for both Portuguese and foreigners.
+                    IPS was created in 1979 and started activity in 1981. At present the IPS comprises five Higher Education Schools. It also integrates a Students’ Welfare Unit and a number of functional units and central services.
+                    Although we're happy with the policies that IPS is implementing, we think that we could do much more to try to pass the message of a sustainable future
+                    and try to show to our people, what we can achieve with Sustainability. We should not think only about us, we have to think ahead and care for the future generations
+                    that will come to this planet.
+                </p>
+            </section>
+            <section class="campus">
+                <img src="images/campus.jpg" alt="campus">
+            </section>
+        </section>
+
+        <section class="contact-form">
+            <h1>Contact Form</h1>
+            <section class="input-fields">
+                <label for="name">Name</label>
+                <input type="text" name="input" id="name">
+                <label for="email">Email</label>
+                <input type="text" name="input" id="email">
+            </section>
+            <section class="message">
+                <label for="message">Message</label>
+                <textarea id="message" cols="30" rows="10"></textarea>
+                <button onclick="handleMail()">Send</button>
+            </section>
+        </section>
+    </main>
+    <main class="internacional">
+        <article>
+            <img src="images/portugal.png" alt="portugal" class="flags">
+            <h2>Portugal</h2>
+            <p>
+                Portugal has not really been an example in the Sustainability department. In 2017 we increased 
+                our carbon dioxide emissions in 7.3%, being the average raise in the European Union 1.8%, acording to Eurostat.
+                However all is not lost, in 2016 we ranked third in the incorporation of renewable energy in 
+                the production of electricity. The production of renewable energy represented 42% of consuption
+                and electricity export.
+                The portuguese government reduced the use of disposable products
+                in 25%. The European Union also aproved the banning of plastic products starting in 2021. Some of the goals 
+                for Portugal is: reducing carbon dioxide emissions between 30 to 40% in relation to 2005; increase the weigth of
+                renewable energy to 40% of the final consuption; have 100% of 
+                potable water being in the linear of "Good or Really good"; only have two days per year with the Air Quality Index
+                in the "week" or "bad" category. 
+                Portugal will be implementing measures until 2030 to achieve all this set goals. 
+                
+            </p>
+        </article>
+        <article>
+            <img src="images/spain.jpg" alt="spain" class="flags">
+            <h2>Spain</h2>
+            <p>
+                Spain has established a Sustainable Development Council to support SDG implementation. Approving such a Council was one of Spain’s national commitments to the SDGs.
+                The Sustainable Development Council is composed of 50 representatives from civil society, business, academia and other key stakeholders. Through the Council, Spain reaffirms its commitment to the 2030 Agenda as a roadmap for the future and “a transformative action plan for people, the planet, prosperity, peace and partnership.”
+                Prime Minister Pedro Sánchez stressed his commitment to achieving the SDGs in a speech at the Council’s establishment. He added that Spain supports the UN’s reform efforts to become more agile, flexible and efficient, and emphasized Spain’s support for the UN Secretary-General’s leadership and vision.
+                UN Deputy Secretary-General Amina Mohammed remarked on Spain’s “remarkable track record in support of sustainable development,” describing the country as a “steadfast supporter of sustainable development from day one.” She welcomed the establishment of the Sustainable Development Council, saying national councils are critical institutional components for promoting public engagement in sustainable development at the national level, and ensuring that all voices are heard and considered in the decision-making process.
+            </p>
+        </article>
+        <article>
+            <img src="images/france.png" alt="france" class="flags">
+            <h2>France</h2>
+            <p>On 17 August 2015, well before COP21, the Energy Transition for Green Growth Act gave legislative shape to France’s voluntary commitment to cut its greenhouse gas emissions by 40% below 1990 levels by 2030.
+                The act sets targets to increase the share of renewable energy sources to over 30% of final energy consumption in 2030 and bring down the share of nuclear power in electricity generation to 50% by 2025.
+                The Government led Parliament to pass a “climate energy contribution” on greenhouse gas emissions built into the taxes on petroleum products on a pathway, already adopted by Parliament, set to rise from €56 per tonne of CO2 in 2020 to €100 per tonne of CO2 in 2030. It will propose that Parliament introduce a price floor on carbon of some €30 per tonne in the power generation sector in 2017.
+                In June 2016, France was one of the first industrialised countries to complete its domestic process to ratify the Paris Agreement and is working with its European partners for the EU in its entirety to ratify it as soon as possible. As a contribution to rapidly increase collective ambition, France committed to upgrade its mitigation target by 2020.
+            </p>
+        </article>
+        <article>
+            <img src="images/england.png" alt="england" class="flags">
+            <h2>England</h2>
+            <p>Agenda 21 requires that nations participating in the quest for a more sustainable social, environmental and economic future develop national strategies for their sustainable development. The UK Government bases its vision of sustainable development on four broad objectives:
+
+                Social progress which recognises the needs of everyone;
+                Effective protection of the environment;
+                Prudent use of natural resources; and
+                Maintenance of high and stable levels of economic growth and employment.
+                The UK Sustainable Development Strategy recognises that everybody has the right to a healthy, clean and safe environment. This can be achieved by reducing pollution, poverty, poor housing and unemployment. Global environmental threats, such as climate change and poor air quality must be reduced to protect human and environmental health. The use of non-renewable resources such as fossil fuels should not be stopped overnight, but they must be used efficiently and the development of alternatives should be used to help phase them out. Finally, everybody has the right to a good standard of living, with better job opportunities. Economic prosperity is required if the UK is to prosper. For this, we need a workforce equipped with suitable skills and education within a framework to support them.
+            </p>
+        </article>
+        <article>
+            <img src="images/germany.png" alt="germany" class="flags">
+            <h2>Germany</h2>
+            <p>
+                Germany is one of the most sustainable industrial countries. Companies are committing to their social responsibility.
+                Germany is one of the world’s most sustain­able industrialised nations. This is the conclusion reached by an international comparative study of the 34 OECD member states. Against the backdrop of the United Nations’ 17 Sustainable Development Goals (SDGs), the countries were systematically analysed for the first time on the basis of 34 indicators ranging from environmental protection and growth to the quality of the welfare systems. Germany was in sixth place, doing well in particular with regard to growth, employment, and social security.
+                That said, in some areas Germany is far from following a sustainable lifestyle, sustainable business, and a sustainable approach to natural resources. Consequently, in 2017 the Federal Government comprehensively advanced its sustainability strategy and aligned it with the UN’s 17 SDGs. The new strategy envisages three levels: measures with an impact in Germany, measures taken by Germany with a global impact, and the direct support of other countries by means of bilateral cooperation.
+            </p>
+        </article>
+    </main>
+    <main class="tech">
+        <h1>How can Technologies help achieve Sustainability?</h1>
+        <p>In this sections of the website we will list a variaty of technologies that will help us as humans achieve sustainability.</p>
+        <img src="images/tech.jpg" alt="tech" id="tech_img">
+        <section>
+            <h2>1. Public eletric transport</h2>
+            <p> It’s not only individual vehicle owners who have better access to electric vehicles (EVs) than ever before—there are 160 electric and hybrid vehicle models available today—but municipalities are taking notice as well. In China, 300,000 electric buses hum down city streets every day. Their widespread adoption in China—an economic coup as much as a policy one—will entice European cities to follow suit.
+                Although these eBuses have higher acquisition prices due to upfront battery costs, their total cost of ownership (TCO) is lower due to their independence from pricey diesel. They also eliminate local particulates, including SOx, NOx, and CO2, all major issues in most cities today.
+            </p>
+            <p>Read more: <a href="https://www.mckinsey.com/industries/oil-and-gas/our-insights/the-european-electric-bus-market-is-charging-ahead-but-how-will-it-develop">The European electric bus market is charging ahead, but how will it develop?</a></p>
+        </section>
+
+        <section>
+            <h2>2. Electric Trucks</h2>
+            <p>With personal electric vehicles grabbing more and more market share, commercial fleets could follow suit rapidly. But to ensure an efficient transition, we need a firm understanding of the total cost of ownership. Decades ago, widespread adoption of electric trucks—or “eTrucks”—was cost prohibitive. But today, the total cost of ownership could soon be on par with diesel-run trucks, due in part to increasingly cost competitive and available electric vehicle infrastructure. We predict that adoption of battery electric commercial vehicles (BECVs), especially in the light- and medium-duty segments, could surpass the car EV sales mix in some markets by 2030. And although many heavy-duty BECVs will need to charge mid-route, our analysis shows that a charging station every 80 to 100 kilometers on popular routes will suffice for early phases of adoption.</p>
+            <p>Read more: <a href="https://www.mckinsey.com/industries/automotive-and-assembly/our-insights/whats-sparking-electric-vehicle-adoption-in-the-truck-industry">What’s sparking electric-vehicle adoption in the truck industry?</a></p>
+        </section>
+
+        <section>
+            <h2>3. Cheap energy storage</h2>
+            <p>The new age of electric vehicles has rapidly expanded the market for lithium and cobalt batteries—and drastically reduced their price. Lithium ion batteries now cost $200 per kilowatt-hour compared to $1,000 per kilowatt-hour just nine years ago. The expanded market for batteries has implications for more than just EVs. Industry and utilities are finding broader use for them as energy-storage solutions. With prices for batteries rapidly dropping, they are proving valuable to reduce power costs, increase reliability and resiliency, and make power systems more flexible to operate. But the wide accessibility of cheap energy storage also means utilities will need to change quickly. One way will be to move away from a variable rate structure to a fixed fee for access to the grid (like cable TV), especially as consumers begin to generate their own energy. Another will be to revise grid-planning approaches by increasing circuit-by-circuit nodal planning.</p>
+            <p>Read more: <a href="https://www.mckinsey.com/business-functions/sustainability/our-insights/battery-storage-the-next-disruptive-technology-in-the-power-sector">Battery storage: The next disruptive technology in the power sector</a></p>
+        </section>
+
+        <section>
+            <h2>4. Long-term storage</h2>
+            <p>Lithium-ion batteries are great for addressing short-term storage needs (4-5 hours) that arise frequently (20-200 times per year), but the market also wants solutions that address long-term storage needs brought on by seasonal shifts and multi-day periods when the sun does not shine and the wind does not blow. Historically, hydropower dams were one of the only approaches to manage these seasonal shifts. Otherwise, the system would need to build a whole series of plants that only run for a few days each year. Fortunately, a new series of innovators believe they are close to developing long-duration storage technologies. Google X just spun off Malta, which is storing renewable energy in molten salt. Antora Energy is trying to solve the same problem by building a low-cost thermal battery for grid-scale energy storage. And BP-backed Lightsource is adding storage to solar developments. What’s clear is that if long-term energy storage works, the price of power will decline significantly. These long-term solutions could eliminate the cost incurred through the underutilization of assets during and save money by inserting lower-cost generators such as solar and wind in the power supply.</p>
+        </section>
+
+        <section>
+            <h2>5. Plastic recycling</h2>
+            <p>260 million tons of plastic waste is generated across the globe every year, but only 16 percent gets recycled. The plastics industry has the opportunity to move away from a “take, make, and dispose” business model and adopt a circular model, which aims to eliminate waste across sectors while creating economic, societal, and environmental benefits. One promising circular process is pyrolysis, which uses heat and the absence of oxygen to reconvert plastic waste back into liquid feedstock. The benefits are economic as much as environmental, with a recycling-based profit pool estimated at $55 billion by the next decade.</p>
+            <p>Read more: <a href="https://www.mckinsey.com/industries/chemicals/our-insights/no-time-to-waste-what-plastics-recycling-could-offer">No time to waste: What plastics recycling could offer</a></p>
+        </section>
+
+        <section>
+            <h2>6. LED light efficiency</h2>
+            <p>Energy-efficient LED lighting is quickly replacing traditional incandescent bulbs in American homes and is expected to achieve 84 percent market share by 2030. In 2030 alone, LED lights will reduce energy consumption by 40 percent, which adds up to $26 billion in savings adjusted to today’s energy prices. These are dramatic cost savings, but according to the Department of Energy, the U.S. can still see an additional 20 percent in energy savings with increased investment in LED lights.</p>
+            <p>Read more: <a href="https://www.energy.gov/energysaver/save-electricity-and-fuel/lighting-choices-save-you-money/led-lighting">LED Lighting</a></p> 
+        </section>
+
+        <section>
+            <h2>7. Accessible solar power</h2>
+            <p>Renewable energy continues to become cheaper and more accessible into 2019, a trend that has major implications for the nearly 1 billion people across the globe without access to electricity. While expanding the grid is part of the access solution, countries in sub-Saharan Africa and the Caribbean, which account for a majority of the world’s unelectrified population, are exploring renewable solutions like solar energy to bring energy quickly and inexpensively to millions. Innovative financing plans can help make previously unaffordable solar home systems (SHSs) a smart solution for communities that are too far from a reliable grid connection. A recent McKinsey assessment determined that SHSs can help power 150 million households by 2020.</p>
+            <p>Read more: <a href="https://www.mckinsey.com/business-functions/sustainability/our-insights/bringing-solar-power-to-the-people">Bringing (solar) power to the people</a></p>
+        </section>
+
+        <section>
+            <h2>8. Carbon capture and storage</h2>
+            <p>Instead of just focusing on completely decarbonizing the major industrial commodities behind plastics and cement, we can also consider safely capturing the carbon emitted when these commodities are produced. Carbon capture and storage (CCS) allows industry to capture carbon at its source, compress it, and move it to a suitable permanent storage site. The technology not only has the potential to significantly reduce greenhouse-gas emissions—it can also mean more money if the CO2 can be used profitably to make other products. Several industries are already working to put captured carbon dioxide to profitable use, including manufacturers who use captured carbon to make plastics, such as polyurethane. Emerging technologies, including direct air capture, have previously been too cost prohibitive to implement at scale. But a new Stanford University study predicts that direct air capture, which grabs carbon dioxide from the air and converts it into synthetic fuel, could eventually drop from $600 per ton of carbon dioxide to less than $100.</p>
+            <p>Read more: <a href="https://www.mckinsey.com/business-functions/sustainability/our-insights/why-commercial-use-could-be-the-future-of-carbon-capture">Why commercial use could be the future of carbon capture</a></p>
+        </section>
+
+        <section>
+            <h2>9. Hydrogen in the energy transition</h2>
+            <p>It’s difficult to imagine how we meet ambitious global warming benchmarks without including hydrogen as a critical part of the solution. Hydrogen-led pathways to cleaning up the environment forecast hydrogen powering more than 400 million cars, 15 to 20 million buses, and more than 20 percent of passenger ships and locomotives by 2050. Although battery-powered electric vehicles exhibit overall higher fuel efficiency, hydrogen-powered fuel cells can store more energy with less weight. This makes them an ideal solution for heavy cargo vehicles that must travel long distances. Hydrogen-powered fuel cell vehicles are already on the road in Japan, South Korea, California, and Germany—and more than 10 models are slated for release by 2020. In short, hydrogen fuel could help the world meet its goal of decreasing carbon dioxide emissions by 60 percent. Although the necessary technology exists today, the costs for producing hydrogen need to decline significantly, and the infrastructure that supports it needs a step up. Hydrogen could facilitate smarter use of other renewables by acting as a long-term transport and storage solution for renewable electricity. It could be a key enabler in the energy transition.</p>
+            <p>Read more: <a href="http://hydrogencouncil.com/wp-content/uploads/2017/11/Hydrogen-scaling-up-Hydrogen-Council.pdf">Hydrogen scaling up: A sustainable pathway for the global energy transition and Hydrogen: The next wave for electric vehicles?</a></p>
+        </section>
+    </main>
+    <main class = "universities">
+        <article>
+            <img src="images/Harvard.png" class = "rightBanner" alt="Logo" height="100" width="100">     
+            <h2>Harvard</h2>   
+            <p>Harvard has a program that includes students, professors, volunteers, many more, that work together to fight the many problems we face as Humanity. The Harvard Sustainability Plan aligns Harvard’s decentralized campus around a holistic vision and sets clear University-wide goals and priorities in the areas of emissions and energy, campus operations, nature and ecosystems, health and well-being, and culture and learning. It also encourages students, faculty, and staff to continue piloting sustainability solutions throughout the University by using Harvard’s cutting-edge research and teaching to tackle real-world challenges on campus. </p>  
+        </article>
+        <article>
+            <img src="images/MIT.png" class = "leftBanner" alt="Logo" height="75" width="100">  
+            <h2>MIT</h2> 
+            <p>MIT, similar to Harvard, offers many possibilities to help to change the world. By utilizing the campus as a testbed and incubator, they aim to transform MIT into a powerful model that generates new and proven ways of responding to the challenges of our changing planet. The MIT Office of Sustainability (MITOS) was established in 2013 under the Executive Vice President and Treasurer's Office to integrate sustainability across all levels of our campus by engaging the collective brainpower of our students, staff, faculty, alumni, and partners. They have set out to ensure that sustainability is a critical part of MIT’s standard operating procedures and is fully integrated into the working, research, teaching, social and cultural spheres of their campus.</p>          
+        </article>
+        <article>
+            <img src="images/DTU.png" class = "rightBanner" alt="Logo" height="100" width="75">    
+            <h2>DTU</h2>        
+            <p class="padding">DTU, or Technical University of Denmark, sees Sustainability as a key focus for companies, public authorities and society as a whole. They deliver research-based methods, instruments and decision support for a sustainable transition. The Sustainability division is at the international forefront within a range of key research fields. A sustainable transition can only be realized with the understanding and monitoring of the sustainability implications of technological, political and societal initiatives. To enable this, they offer research-based tools within sustainability and life cycle assessments. This also provides future engineers with the skills to conduct sustainability assessments.</p> 
+        </article>
+        <article>           
+            <img src="images/IPS.png" class = "leftBanner" alt="Logo" height="100" width="100">
+            <h2>IPS</h2>
+            <p>
+                Through the action plans approved by the Conselho Eco-Escola, IPS is committed to developing a set of actions in the areas of waste, water, energy, forest, sea, sustainable mobility and healthy living, among others, having as common denominator the promoting behavior change to improve environmental performance, both internally, in the school space, and in the wider community of the Setúbal region. With the Eco-Escolas programm it aims to encourage actions, recognize and reward the work developed by schools, within the scope of Educação Ambiental para a Sustentabilidade. The program is coordinated at the international, national, regional and school levels. This multilevel coordination allows the confluence of common objectives, methodologies and criteria that respect the specificity of each school in relation to its students and characteristics of the environment.</p>
+        </article>
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha256-ABrLsV2caVEMCBfm3eNhv/CYQG+tGCqzw2f4b/Pag0M=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha256-v/YsEqWkVsiNHryCWg+vjC/eDBakMAgOsCJRa0kNPOg=" crossorigin="anonymous"></script>
     <script src="scripts/landing_script.js"></script>
