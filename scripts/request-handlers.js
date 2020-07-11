@@ -33,8 +33,8 @@ function getPeople(req, res) {
 
                 }
 				
-				user.close();
-
+                user.close();
+                return documents;
             });
 
         }

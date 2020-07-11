@@ -64,7 +64,11 @@ Information.prototype.loginUser = function () {
     const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
 
+    xhr.onreadystatechange = function() {
+        console.log(xhr.response);
+    }
+
     xhr.open('POST', '/login');
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send({"username": username, "password": password});
+    xhr.send(JSON.stringify({"username": username, "password": password}));
 }
