@@ -4,6 +4,8 @@ var menu = document.querySelector('.menu')
 var tech_img = document.querySelector('#tech_img')
 var toggle = document.querySelector('.labelResponsive')
 
+var transporter = require('./mail_config');
+
 
 var t1 = new TimelineMax();
 
@@ -46,3 +48,23 @@ function showRegisterPage(){
 
 }
 
+function handleMail(){
+    var name = document.getElementById('name').nodeValue;
+    var email = document.getElementById('email').nodeValue;
+    var message = document.getElementById('message').nodeValue;
+
+    var mailOptions = {
+        from: 'sustainabilitywebpi@gmail.com',
+        to: '180221017@estudantes.ips.pt, 180221017@estudantes.ips.pt',
+        subject: 'Message from '+ name,
+        text: message + '\nContact: ' + email
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            alert('Something went wrong. Please try again');
+        }else{
+            alert('Message sent successfully')
+        }
+    })
+}
