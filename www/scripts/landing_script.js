@@ -84,6 +84,7 @@ function showInternational(){
 
 function showTech(){
     for(var i = 0; i < pages.length; i++){
+        console.log(pages[i].className);
         if(pages[i].className=='tech'){
             pages[i].style.display = 'block';  
             t1.fromTo(pages[i], 1, {opacity: "0"}, {opacity: "1"});
@@ -112,22 +113,38 @@ function showRegisterPage(){
 }
 
 function handleMail(){
-    var name = document.getElementById('name').nodeValue;
-    var email = document.getElementById('email').nodeValue;
-    var message = document.getElementById('message').nodeValue;
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+    if(!name){
+        alert('Invalid name');
+    }else if(!email){
+        alert('Invalid email');
+    }else if(!message){
+        alert('Invalid message');
+    }else{
+        var mailOptions = {
+            from: 'sustainabilitywebpi@gmail.com',
+            to: '180221017@estudantes.ips.pt, 180221019@estudantes.ips.pt',
+            subject: 'Message from '+ name,
+            text: message + '\n\n\nContact: ' + email
+        };
 
-    var mailOptions = {
-        from: 'sustainabilitywebpi@gmail.com',
-        to: '180221017@estudantes.ips.pt, 180221017@estudantes.ips.pt',
-        subject: 'Message from '+ name,
-        text: message + '\nContact: ' + email
-    };
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = 'json';
+        console.log('Estou aqui');
+        xhr.open('POST', '/');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        console.log(JSON.stringify(mailOptions));
+        xhr.send(JSON.stringify(mailOptions));
 
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            alert('Something went wrong. Please try again');
-        }else{
-            alert('Message sent successfully')
-        }
-    })
+        alert('Email sent successfully!')
+
+        document.getElementById('name').value = "";
+        document.getElementById('email').value = "";
+        document.getElementById('message').value = "";
+    }
+
+    
+    
 }

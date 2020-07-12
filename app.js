@@ -8,8 +8,8 @@ const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
 const initializePassport = require('./passport_config');
-<<<<<<< HEAD
 const { get } = require("http");
+const transporter = require('./mail_config');
 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://127.0.0.1:27017/";
@@ -28,15 +28,13 @@ MongoClient.connect(url, function(err, db) {
         db.close();
     });
     
-=======
-const transporter = require('./mail_config');
+
 
 initializePassport(passport, username => {
     information_aux.getUsers.find(user => user.username === username),
     id => {
         information_aux.getUsers.find(user => user.id === id)
     }
->>>>>>> fed616bd51d009dc83293f5ebd04c3f4282a9922
 });
 
 var app = express();
@@ -66,6 +64,10 @@ app.get("/users", requestHandlers.getPeople);
 
 app.post("/register", requestHandlers.createUpdateUser);
 
+app.post("/", function(req, res) {
+    transporter.sendMail(req.body);
+});
+
 app.post("/login", checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
@@ -93,4 +95,4 @@ function checkNotAuthenticated(req, res, next) {
       return res.redirect('/')
     }
     next()
-}
+}})
