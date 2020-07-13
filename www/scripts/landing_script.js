@@ -84,7 +84,6 @@ function showInternational(){
 
 function showTech(){
     for(var i = 0; i < pages.length; i++){
-        console.log(pages[i].className);
         if(pages[i].className=='tech'){
             pages[i].style.display = 'block';  
             t1.fromTo(pages[i], 1, {opacity: "0"}, {opacity: "1"});

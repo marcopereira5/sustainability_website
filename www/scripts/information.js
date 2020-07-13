@@ -56,6 +56,34 @@ Information.prototype.importUsers = function () {
     xhr.send();
 }
 
+Information.prototype.importCountries = function (){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/", true); 
+    xhr.onreadystatechange = function() {
+        if ((this.readyState == 4) && (this.status == 200)){
+            var response = JSON.parse(xhr.responseText);
+            var main = document.getElementById('international');
+            response.country.forEach(element => {
+                let art = document.createElement("ARTICLE");
+                let img = document.createElement("IMG");
+                let h = document.createElement("H2");
+                let par = document.createElement("p");
+                img.setAttribute("src",element.img_src);
+                img.setAttribute("alt",element.name);
+                img.setAttribute("class","flags");
+                art.appendChild(img);
+                h.innerText = element.name;
+                par.innerText = element.description;
+                art.appendChild(h);
+                art.appendChild(par);
+                main.appendChild(art);
+            });
+        }
+    }
+
+    xhr.send();
+}
+
 
 Information.prototype.loginUser = function () {
     var username = document.getElementById("username_login").value;
