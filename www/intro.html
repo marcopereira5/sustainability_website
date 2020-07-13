@@ -256,6 +256,53 @@
                 Through the action plans approved by the Conselho Eco-Escola, IPS is committed to developing a set of actions in the areas of waste, water, energy, forest, sea, sustainable mobility and healthy living, among others, having as common denominator the promoting behavior change to improve environmental performance, both internally, in the school space, and in the wider community of the Setúbal region. With the Eco-Escolas programm it aims to encourage actions, recognize and reward the work developed by schools, within the scope of Educação Ambiental para a Sustentabilidade. The program is coordinated at the international, national, regional and school levels. This multilevel coordination allows the confluence of common objectives, methodologies and criteria that respect the specificity of each school in relation to its students and characteristics of the environment.</p>
         </article>
     </main>
+    <main class="edit">
+        <form class="form-horizontal" id="register">
+            <fieldset id="fields">
+              <div id="legend">
+                <legend class="">Edit Profile</legend>
+              </div>
+              <div class="control-group">
+                <label class="control-label"  for="username">Username</label>
+                <div class="controls">
+                  <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                  <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+                </div>
+              </div>
+           
+              <div class="control-group">
+                <label class="control-label" for="email">E-mail:</label>
+                <p class="font-weight-bold" id="email"></p>
+              </div>
+           
+              <div class="control-group">
+                <label class="control-label" for="new_password"> Current Password</label>
+                <div class="controls">
+                  <input type="password" id="new_password" name="new_password" placeholder="••••••" class="input-xlarge">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="new_password"> New Password</label>
+                <div class="controls">
+                  <input type="password" id="new_password" name="new_password" placeholder="" class="input-xlarge">
+                  <p class="help-block">Password should be at least 4 characters</p>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="new_password"> Confirm Password</label>
+                <div class="controls">
+                  <input type="password" id="new_password" name="new_password" placeholder="" class="input-xlarge">
+                </div>
+              </div>
+           
+              <div class="control-group">
+                <div class="controls">
+                  <button type="button" class="btn" onclick="javascript:info.processAddUser()">Save Changes</button>
+                </div>
+              </div>
+            </fieldset>
+        </form>
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha256-ABrLsV2caVEMCBfm3eNhv/CYQG+tGCqzw2f4b/Pag0M=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha256-v/YsEqWkVsiNHryCWg+vjC/eDBakMAgOsCJRa0kNPOg=" crossorigin="anonymous"></script>
     <script src="scripts/landing_script.js"></script>
