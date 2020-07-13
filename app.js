@@ -8,7 +8,6 @@ const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
 const initializePassport = require('./passport_config');
-<<<<<<< HEAD
 const { get } = require("http");
 
 var MongoClient = require('mongodb').MongoClient;
@@ -28,15 +27,6 @@ MongoClient.connect(url, function(err, db) {
         db.close();
     });
     
-=======
-const transporter = require('./mail_config');
-
-initializePassport(passport, username => {
-    information_aux.getUsers.find(user => user.username === username),
-    id => {
-        information_aux.getUsers.find(user => user.id === id)
-    }
->>>>>>> fed616bd51d009dc83293f5ebd04c3f4282a9922
 });
 
 var app = express();
@@ -66,13 +56,14 @@ app.get("/users", requestHandlers.getPeople);
 
 app.post("/register", requestHandlers.createUpdateUser);
 
-app.post("/login", checkNotAuthenticated, passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-}));
+app.post("/login", 
+    passport.authenticate('local'), 
+    function(req, res) {
+        console.log("hello");
+        res.json({status: "Success", redirect: '/'});
+    });
 
-app.get("/login", function (req, res){
+app.get("/login", checkNotAuthenticated, function (req, res){
     res.sendFile(path.join(__dirname + "/www/login.html"));
 });
 
@@ -89,8 +80,10 @@ function checkAuthenticated(req, res, next) {
 }
 
 function checkNotAuthenticated(req, res, next) {
+    console.log(req.isAuthenticated());
     if (req.isAuthenticated()) {
       return res.redirect('/')
     }
-    next()
+
+    next();
 }

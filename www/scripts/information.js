@@ -65,7 +65,10 @@ Information.prototype.loginUser = function () {
     xhr.responseType = 'json';
 
     xhr.onreadystatechange = function() {
-        console.log(xhr.response);
+        console.log(this);
+        if ((this.readyState == 4) && (this.status == 200)){
+            window.location = "/";
+        }
     }
 
     xhr.open('POST', '/login');

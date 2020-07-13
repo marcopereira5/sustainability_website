@@ -20,6 +20,7 @@ function initialize(passport, users, users_aux){
 
         try {
             if (password == user.password){
+                console.log("LOGGED");
                 return done(null, user);
             } else {
                 return done(null, false, {message: 'Password incorrect'})
@@ -32,8 +33,8 @@ function initialize(passport, users, users_aux){
     passport.use(new LocalStrategy({usernameField: 'username'}, authenticateUser));
 
     passport.serializeUser((user, done) => { 
-        console.log("HEYOOOO")
-        done(null, user._id) 
+        console.log("Serialized:" + user);
+        done(null, user._id); 
     });
     passport.deserializeUser((id, done) => { 
         var user_aux;
@@ -41,8 +42,9 @@ function initialize(passport, users, users_aux){
             if (element._id == id){
                 user_aux = element;
             }
-        })
-        return done(null, user_aux);
+        });
+        console.log("Dese: " + user_aux.name);
+        done(null, user_aux);
     });
 }
 
