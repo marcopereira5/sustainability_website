@@ -2,11 +2,12 @@
  * @class Guarda toda a informação necessária para a manutenção e suporte ao website
  * @constructs Informacao
  * 
- * @property {user[]} users - Array de objetos do tipo Userm para guardar todas as pessoas do sistema
+ * @property {user[]} users - Array de objetos do tipo User para guardar todas as pessoas do sistema
+ * @property {thread[]} threads - Array de objetos do tipo Thread para guardar todas as pessoas do sistema
  */
 function Information(){
     this.users = [];
-    console.log(this.users);
+    this.threads = [];
 }
 
 Information.prototype.getUsers = function () {
@@ -29,7 +30,7 @@ Information.prototype.processAddUser = function () {
             console.log(xhr.response);
             newUser = new User(xhr.response.upserted[0]._id, username, email, password);
             self.users.push(newUser);
-            window.location.replace("/login");
+            window.location = "/login";
         }
     }
     xhr.open('POST', '/register/');
@@ -96,6 +97,11 @@ Information.prototype.loginUser = function () {
         console.log(this);
         if ((this.readyState == 4) && (this.status == 200)){
             window.location = "/";
+        } else if ((this.readyState == 4) && (this.status == 401)){
+            var alert = document.getElementById("alert");
+            alert.textContent = "Please input a valid combination";
+            alert.style.color = "red";
+            alert.style.textAlign = "center";
         }
     }
 
@@ -103,3 +109,50 @@ Information.prototype.loginUser = function () {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({"username": username, "password": password}));
 }
+
+Information.prototype.addThread = function () {
+    var name = document.getElementById("thread_name").value;
+    var text = document.getElementById("text").value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/threads");
+
+    xhr.onreadystatechange = function() {
+        if ((this.readyState == 4) && (this.status == 200)){
+            console.log(JSON.parse(xhr.responseText));
+        }
+    }
+
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({"name": name, "text": text}));
+}
+
+Information.prototype.importThreads = function () {
+    var threads = this.threads;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/threads");
+
+    xhr.onreadystatechange = function() {
+        if ((this.readyState == 4) && (this.status == 200)){
+            var response = JSON.parse(xhr.responseText);
+            response.thread.forEach(element => {
+                threads.push(new Thread(element._id, element.name, element.date, element.text, element.user, element.replies));
+            });
+        }
+    }
+
+    xhr.send();
+}
+
+function showThreads() {
+    this.importThreads();
+    var tbody = document.getElementById("t_threads");
+
+    console.log(this.threads);
+
+    this.threads.forEach(element =>{
+        tbody.innerHTML += "<tr> <th scope='row'>" + element.name + "</th> <td>" + element.creationDate + "</td>"
+        + "<td>" + element.text + "</td> <td>" + element.replies + "</td> </tr>";
+    });
+}
+

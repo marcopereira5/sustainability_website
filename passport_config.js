@@ -1,13 +1,16 @@
 const LocalStrategy = require('passport-local').Strategy;
+const requestHandlers = require("./scripts/request-handlers.js");
 
-function initialize(passport, users, users_aux){
+function initialize(passport){
     const authenticateUser = (username, password, done) => {
         var user;
+        var users = JSON.parse(requestHandlers.getUsers());
 
-        console.log(users);
+        console.log(users + "Hello");
 
         users.forEach(element => {
-            if (element.name === username){
+            console.log(element);
+            if (element.username === username){
                 user = element;
             }
         });
@@ -34,16 +37,18 @@ function initialize(passport, users, users_aux){
 
     passport.serializeUser((user, done) => { 
         console.log("Serialized:" + user);
-        done(null, user._id); 
+        done(null, user.id); 
     });
     passport.deserializeUser((id, done) => { 
         var user_aux;
+        var users_aux = JSON.parse(requestHandlers.getUsers());
+
         users_aux.forEach(element => {
-            if (element._id == id){
+            if (element.id == id){
                 user_aux = element;
             }
         });
-        console.log("Dese: " + user_aux.name);
+        console.log("Dese: " + user_aux.username);
         done(null, user_aux);
     });
 }

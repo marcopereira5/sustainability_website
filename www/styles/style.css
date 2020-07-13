@@ -574,6 +574,52 @@ input:focus{
     margin-top: 10%;
 }
 
+#forum{
+    width: 80%;
+	top:0;
+	bottom: 0;
+	left: 0;
+    right: 0;
+    
+      
+    padding-top: 40px;
+    margin: auto;
+    text-align: left;
+}
+
+tr{
+    height: 100px;
+}
+
+#createThread{
+    display: none;
+}
+
+#btn_add{
+    padding-top: 30px;
+    width: 80%;
+}
+
+#forum h1{
+    padding: 0;
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    width: 50%;
+}
+
+#addThread{
+    float: right;
+}
+
+#header_f{
+    background-color: black;
+}
+
+#createThread{
+    margin-top: 60px;
+}
+
 @media only screen and (max-width: 1150px){
     .labelResponsive{
         display: block;

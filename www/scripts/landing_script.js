@@ -107,8 +107,12 @@ function showUni(){
     mainPage.className = '';
 }
 
-function showRegisterPage(){
+function showLogin(){
+    window.location = "/login";
+}
 
+function showRegisterPage(){
+    window.location = "/register";
 }
 
 function handleMail(){
@@ -142,8 +146,11 @@ function handleMail(){
         document.getElementById('name').value = "";
         document.getElementById('email').value = "";
         document.getElementById('message').value = "";
-    }
-
-    
-    
+    }   
 }
+
+function showAddThread(){
+     document.getElementById("createThread").style.display = "block";
+     document.getElementById("forum").style.display = "none"
+}
+

@@ -19,5 +19,5 @@ window.onload = function (event) {
     const info = new Information();
     window.info = info;
     info.importUsers();
-    console.log(info.getUsers());
+    info.importThreads();
 };
