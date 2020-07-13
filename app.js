@@ -9,6 +9,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 const initializePassport = require('./passport_config');
 const { get } = require("http");
+const transporter = require('./mail_config');
 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://127.0.0.1:27017/";
@@ -62,6 +63,15 @@ app.post("/login",
         console.log("hello");
         res.json({status: "Success", redirect: '/'});
     });
+app.post("/", function(req, res) {
+    transporter.sendMail(req.body);
+});
+
+app.post("/login", checkNotAuthenticated, passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+}));
 
 app.get("/login", checkNotAuthenticated, function (req, res){
     res.sendFile(path.join(__dirname + "/www/login.html"));

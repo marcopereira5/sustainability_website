@@ -45,6 +45,29 @@ function getPeople(req, res) {
 module.exports.getPeople = getPeople;
 
 
+
+function getCountries(req, res) {  
+	let user = new MongoClient(options.mongoDB.connectionString, {useUnifiedTopology: true});
+    user.connect(function (err) {
+        if (err) {
+            res.json({"message": "error", "error": err });
+        } else {
+            
+            let collection = user.db('Project').collection("Country");
+
+            collection.find({}, {name:1, img_src:1, description:1}).toArray(function(err, documents) {
+                if (err) {
+                    res.json({"message": "error", "error": err });
+                } else {
+                    res.json({"message": "success", "country": documents });
+                }	
+                user.close();
+                return documents;
+            });
+        }
+    });	
+}
+
 /**
  * Função para adicionar ou atualizar uma pessoa à BD
  * @param {*} req 
