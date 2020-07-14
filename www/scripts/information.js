@@ -10,10 +10,20 @@ function Information(){
     this.threads = [];
 }
 
+/**
+ * Esta função retorna uma lista de utilizadores
+ * @returns {user[]} lista de utilizadores
+ */
 Information.prototype.getUsers = function () {
     return this.users;
 }
 
+/**
+ * Esta função processa um novo utilizador, para o seu registo na base de dados
+ * São recolhidos os dados necessários, fornecidos pelo utilizador, referentes ao
+ * username, email e password que irão originar um novo utilizador
+ * @function processAddUser adiciona/regista um novo utilizador
+ */
 Information.prototype.processAddUser = function () {
     var username = document.getElementById("username").value;
     var email = document.getElementById("email").value;
@@ -40,6 +50,11 @@ Information.prototype.processAddUser = function () {
 }
 
 
+/**
+ * Esta função atualiza os dados de um utilizador, para o seu registo na base de dados
+ * São recolhidos o username e/ou password, fornecidos pelo próprio utilizador.
+ * @function processUpdateUser atualiza os dados de um utilizador
+ */
 Information.prototype.processUpdateUser = function () {
     var new_username = document.getElementById("new_username").value;
     var new_password = document.getElementById("new_password").value;
@@ -96,6 +111,10 @@ Information.prototype.processUpdateUser = function () {
     xhr.send(JSON.stringify({"name": username, "password": password}));
 }
 
+/**
+ * Esta função trata de importação dos utilizadores existentes da base de dados
+ * @function importUsers importa os dados dos utilizadores
+ */
 Information.prototype.importUsers = function () {
     const self = this;
     var xhr = new XMLHttpRequest();
@@ -114,35 +133,10 @@ Information.prototype.importUsers = function () {
     xhr.send();
 }
 
-Information.prototype.importCountries = function (){
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/", true); 
-    xhr.onreadystatechange = function() {
-        if ((this.readyState == 4) && (this.status == 200)){
-            var response = JSON.parse(xhr.responseText);
-            var main = document.getElementById('international');
-            response.country.forEach(element => {
-                let art = document.createElement("ARTICLE");
-                let img = document.createElement("IMG");
-                let h = document.createElement("H2");
-                let par = document.createElement("p");
-                img.setAttribute("src",element.img_src);
-                img.setAttribute("alt",element.name);
-                img.setAttribute("class","flags");
-                art.appendChild(img);
-                h.innerText = element.name;
-                par.innerText = element.description;
-                art.appendChild(h);
-                art.appendChild(par);
-                main.appendChild(art);
-            });
-        }
-    }
-
-    xhr.send();
-}
-
-
+/**
+ * Esta função trata do login dos utilizadores, recebendo o username e password fornecidos pelo utilizadores
+ * @function loginUser realiza o login de um utilizador
+ */
 Information.prototype.loginUser = function () {
     var username = document.getElementById("username_login").value;
     var password = document.getElementById("password_login").value;
@@ -167,6 +161,10 @@ Information.prototype.loginUser = function () {
     xhr.send(JSON.stringify({"username": username, "password": password}));
 }
 
+/**
+ * Esta função inicia um post/thread, dando a possibilidade de outros utilizadores mais tarde comentarem
+ * @function addThread adiciona um post/thread
+ */
 Information.prototype.addThread = function () {
     var name = document.getElementById("thread_name").value;
     var text = document.getElementById("text").value;
@@ -184,6 +182,10 @@ Information.prototype.addThread = function () {
     xhr.send(JSON.stringify({"name": name, "text": text}));
 }
 
+/**
+ * Esta função trata de importação dos posts/threads existentes da base de dados
+ * @function importThreads importa os posts/threads
+ */
 Information.prototype.importThreads = function () {
     const self = this;
     var xhr = new XMLHttpRequest();
@@ -203,6 +205,11 @@ Information.prototype.importThreads = function () {
     xhr.send();
 }
 
+/**
+ * Através dos dados importados dos posts/threads, esta função trata de transpor
+ * os dados importados para a lista de threads/posts existentes no fórum
+ * @function showThreads mostra os posts existentes no fórum
+ */
 Information.prototype.showThreads = function() {
     var tbody = document.getElementById("t_threads");
 
@@ -214,6 +221,11 @@ Information.prototype.showThreads = function() {
     });
 }
 
+/**
+ * Através dos dados importados dos posts/threads, esta função trata de transpor
+ * os dados importados para a lista de respostas/comentários para cada post existente no fórum
+ * @function replyThread mostra os comentários/respostas dos posts no fórum
+ */
 Information.prototype.replyThread = function(id){
     var thread;
     var user;
@@ -249,6 +261,10 @@ Information.prototype.replyThread = function(id){
     document.getElementById("button_r").innerHTML = '<button class="btn btn-primary" onclick="javascript:info.addReply(\'' + id + '\')">Submit</button>'
 }
 
+/**
+ * Esta função adiciona uma resposta/comentáio a um post associando-o ao respetivo post
+ * @function addReply adiciona comentários/respostas a um post
+ */
 Information.prototype.addReply = function(id){
     var thread;
     var text = document.getElementById("text_r").value;
