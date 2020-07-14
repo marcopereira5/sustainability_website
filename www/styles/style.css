@@ -658,7 +658,7 @@ thead{
     margin-top: 60px;
 }
 
-@media only screen and (max-width: 1150px){
+@media only screen and (max-width: 1475px){
     .labelResponsive{
         display: block;
         cursor: pointer;

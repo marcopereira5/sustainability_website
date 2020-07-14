@@ -7,6 +7,7 @@ var toggle = document.querySelector('.labelResponsive')
 
 var pages = document.getElementsByTagName('main');
 
+var login;
 
 
 var t1 = new TimelineMax();
@@ -107,6 +108,23 @@ function showUni(){
     mainPage.className = '';
 }
 
+function showEdit(){
+    for(var i = 0; i < pages.length; i++){
+        if(pages[i].className=='edit'){
+            pages[i].style.display = 'block';
+            pages[i].style.backgroundImage = 'none';
+            t1.fromTo(pages[i], 1, {opacity: "0"}, {opacity: "1"});
+        }else{
+            pages[i].style.display = 'none'; 
+        }
+    }
+    mainPage.className = '';
+}
+
+function showForum(){
+    window.location = "/forum";
+}
+
 function showLogin(){
     window.location = "/login";
 }
@@ -119,12 +137,19 @@ function handleMail(){
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var message = document.getElementById('message').value;
+    var alert = document.getElementById("alert");
     if(!name){
-        alert('Invalid name');
+        alert.textContent = "Invalid name";
+        alert.style.color = "red";
+        alert.style.textAlign = "center";
     }else if(!email){
-        alert('Invalid email');
+        alert.textContent = "Invalid email";
+        alert.style.color = "red";
+        alert.style.textAlign = "center";
     }else if(!message){
-        alert('Invalid message');
+        alert.textContent = "Invalid mesage";
+        alert.style.color = "red";
+        alert.style.textAlign = "center";
     }else{
         var mailOptions = {
             from: 'sustainabilitywebpi@gmail.com',
@@ -141,7 +166,9 @@ function handleMail(){
         console.log(JSON.stringify(mailOptions));
         xhr.send(JSON.stringify(mailOptions));
 
-        alert('Email sent successfully!')
+        alert.textContent = "Email sent successfully!";
+        alert.style.color = "green";
+        alert.style.textAlign = "center";
 
         document.getElementById('name').value = "";
         document.getElementById('email').value = "";
