@@ -19,7 +19,9 @@ if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
 
-
+/**
+ * 
+ */
 function startPage(){
     for(var i = 0; i < pages.length; i++){
         if(pages[i].className != 'introduction'){
@@ -28,6 +30,14 @@ function startPage(){
     }
 }
 
+/**
+ * Função utilizada para esconder todas as secções que não sejam a página 
+ * dedicada à definição/introdução do tema e mostrar esta mesmo
+ * Com a estruturação do html de main por secção, o método percorre a lista de mains
+ * que é adquirida inicialmente e efetua as mudanças necessárias, conjugando ainda
+ * uma pequena animação que definimos para cada página
+ * @function showDefinition
+ */
 function showDefinition(){
 
     for(var i = 0; i < pages.length; i++){
@@ -42,6 +52,13 @@ function showDefinition(){
     mainPage.className = '';
 }
 
+/**
+ * Função utilizada para esconder todas as secções que não sejam a página incial e mostrar esta mesmo
+ * Com a estruturação do html de main por secção, o método percorre a lista de mains
+ * que é adquirida inicialmente e efetua as mudanças necessárias, conjugando ainda
+ * uma pequena animação que definimos para cada página
+ * @function showMainPage
+ */
 function showMainPage(){
     window.scrollTo(0,0);
 
@@ -59,6 +76,14 @@ function showMainPage(){
     .fromTo(menu, 1.5, {opacity: "0"}, {opacity: "1"}).fromTo(toggle, 1, {opacity: "0"}, {opacity: "1"}, "-=1.5");
 }
 
+/**
+ * Função utilizada para esconder todas as secções que não sejam a página 
+ * dedicada aos criadores/developers e mostrar esta mesmo.
+ * Com a estruturação do html de main por secção, o método percorre a lista de mains
+ * que é adquirida inicialmente e efetua as mudanças necessárias, conjugando ainda
+ * uma pequena animação que definimos para cada página
+ * @function showAbout
+ */
 function showAbout(){
     for(var i = 0; i < pages.length; i++){
         if(pages[i].className=='about'){
@@ -71,6 +96,14 @@ function showAbout(){
     mainPage.className = '';
 }
 
+/**
+ * Função utilizada para esconder todas as secções que não sejam a página 
+ * dedicada às iniciativas internacionais e mostrar esta mesmo
+ * Com a estruturação do html de main por secção, o método percorre a lista de mains
+ * que é adquirida inicialmente e efetua as mudanças necessárias, conjugando ainda
+ * uma pequena animação que definimos para cada página
+ * @function showInternational
+ */
 function showInternational(){
     for(var i = 0; i < pages.length; i++){
         if(pages[i].className=='internacional'){
@@ -83,6 +116,14 @@ function showInternational(){
     mainPage.className = '';
 }
 
+/**
+ * Função utilizada para esconder todas as secções que não sejam a página 
+ * dedicada a projectos e tecnologias relacionadas com o tema e mostrar esta mesmo
+ * Com a estruturação do html de main por secção, o método percorre a lista de mains
+ * que é adquirida inicialmente e efetua as mudanças necessárias, conjugando ainda
+ * uma pequena animação que definimos para cada página
+ * @function showTech
+ */
 function showTech(){
     for(var i = 0; i < pages.length; i++){
         if(pages[i].className=='tech'){
@@ -95,6 +136,14 @@ function showTech(){
     mainPage.className = '';
 }
 
+/**
+ * Função utilizada para esconder todas as secções que não sejam a página 
+ * dedicada a projectos e iniciativas que estejam a ser desenvolvidas a um nivel universitário  do tema e mostrar esta mesmo
+ * Com a estruturação do html de main por secção, o método percorre a lista de mains
+ * que é adquirida inicialmente e efetua as mudanças necessárias, conjugando ainda
+ * uma pequena animação que definimos para cada página
+ * @function showUni
+ */
 function showUni(){
     for(var i = 0; i < pages.length; i++){
         if(pages[i].className=='universities'){
@@ -108,6 +157,13 @@ function showUni(){
     mainPage.className = '';
 }
 
+/**
+ * Função utilizada para esconder todas as secções que não sejam a página de edição do perfil e mostrar esta mesmo
+ * Com a estruturação do html de main por secção, o método percorre a lista de mains
+ * que é adquirida inicialmente e efetua as mudanças necessárias, conjugando ainda
+ * uma pequena animação que definimos para cada página
+ * @function showEdit
+ */
 function showEdit(){
     for(var i = 0; i < pages.length; i++){
         if(pages[i].className=='edit'){
@@ -121,18 +177,34 @@ function showEdit(){
     mainPage.className = '';
 }
 
+/**
+ * Função utilizada aceder ao fórum do site.
+ * @function showForum
+ */
 function showForum(){
     window.location = "/forum";
 }
 
+/**
+ * Função utilizada aceder ao login do site.
+ * @function showLogin
+ */
 function showLogin(){
     window.location = "/login";
 }
 
+/**
+ * Função utilizada aceder à página de registo.
+ * @function showRegisterPage
+ */
 function showRegisterPage(){
     window.location = "/register";
 }
 
+/**
+ * Função utilizada para tratar do envio de mensagens de um utilizador para os criadores/developers do site.
+ * @function handleMail
+ */
 function handleMail(){
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
@@ -176,11 +248,19 @@ function handleMail(){
     }   
 }
 
+/**
+ * Função utilizada mostrar a página de criação de um novo post ou thread
+ * @function showAddThread
+ */
 function showAddThread(){
      document.getElementById("createThread").style.display = "block";
      document.getElementById("forum").style.display = "none"
 }
 
+/**
+ * Função utilizada mostrar todos os threads/posts que existem de momento
+ * @function showThreadsDiv
+ */
 function showThreadsDiv(){
     document.getElementById("createThread").style.display = "none";
     document.getElementsByClassName("introduction_f")[0].style.display = "none";
@@ -188,6 +268,10 @@ function showThreadsDiv(){
     document.getElementById("reply_thread").style.display = "none";
 }
 
+/**
+ * Função utilizada mostrar os comentários ou replies de um certo post/thread
+ * @function showReplies
+ */
 function showReplies(){
     document.getElementById("createThread").style.display = "none";
     document.getElementsByClassName("introduction_f")[0].style.display = "none";
