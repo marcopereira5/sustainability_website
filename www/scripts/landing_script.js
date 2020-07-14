@@ -7,6 +7,7 @@ var toggle = document.querySelector('.labelResponsive')
 
 var pages = document.getElementsByTagName('main');
 
+var login;
 
 
 var t1 = new TimelineMax();
@@ -20,6 +21,10 @@ if ('scrollRestoration' in history) {
 
 
 function startPage(){
+    console.log("Login está a " + login);
+    if(login){
+        afterLogin();
+    }
     for(var i = 0; i < pages.length; i++){
         if(pages[i].className != 'introduction'){
             pages[i].style.display = 'none'; 
@@ -115,16 +120,36 @@ function showRegisterPage(){
     window.location = "/register";
 }
 
+function afterLogin(){
+    var btn = document.getElementById('btn_login');
+    console.log("Entrei no afterLogin");
+    btn.onclick = showDefinition;
+    btn.value = 'Learn more';
+    var reg = document.getElementById('reg');
+    reg.innerHTML = 'Community';
+    reg.onclick = showThreads;
+}
+
 function handleMail(){
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var message = document.getElementById('message').value;
+    var alert = document.getElementById("alert");
+            alert.textContent = "Please input a valid combination";
+            alert.style.color = "red";
+            alert.style.textAlign = "center";
     if(!name){
-        alert('Invalid name');
+        alert.textContent = "Invalid name";
+        alert.style.color = "red";
+        alert.style.textAlign = "center";
     }else if(!email){
-        alert('Invalid email');
+        alert.textContent = "Invalid email";
+        alert.style.color = "red";
+        alert.style.textAlign = "center";
     }else if(!message){
-        alert('Invalid message');
+        alert.textContent = "Invalid mesage";
+        alert.style.color = "red";
+        alert.style.textAlign = "center";
     }else{
         var mailOptions = {
             from: 'sustainabilitywebpi@gmail.com',
@@ -141,7 +166,9 @@ function handleMail(){
         console.log(JSON.stringify(mailOptions));
         xhr.send(JSON.stringify(mailOptions));
 
-        alert('Email sent successfully!')
+        alert.textContent = "Email sent successfully!";
+        alert.style.color = "green";
+        alert.style.textAlign = "center";
 
         document.getElementById('name').value = "";
         document.getElementById('email').value = "";
@@ -154,3 +181,11 @@ function showAddThread(){
      document.getElementById("forum").style.display = "none"
 }
 
+function setLogin(){
+    if(login){
+        login = false;
+    }else{
+        login = true;
+    }
+    console.log(" BRUUHHHHHHH Login está a " + login);
+}
