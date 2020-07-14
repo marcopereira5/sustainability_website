@@ -1,16 +1,29 @@
 "use strict";
+
+/**
+ * @class Guarda toda a informação necessária para o suporte de requests
+ */
+
 const MongoClient = require("mongodb").MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const options = require("../config/options.json");
 const user = require("../www/scripts/user.js");
 const { json } = require("body-parser");
 
-var users = []
-
+var users = [];
+/**
+ * retorna mongodb client
+ */
 function getMongoDbClient() {
     return new MongoClient(options.mongoDB.connectionString, {useUnifiedTopology: true});
 }
 
+/**
+ * envia para o lado do cliente todos os users
+ * 
+ * @param req - request
+ * @param res - result
+ */
 function getPeople(req, res) {
     
 	let user = new MongoClient(options.mongoDB.connectionString, {useUnifiedTopology: true});
@@ -50,11 +63,21 @@ function getPeople(req, res) {
 }
 module.exports.getPeople = getPeople;
 
+/**
+ * returna os users
+ * @param req - request
+ * @param res - result
+ */
 function getUsers(req, res) {
 	return JSON.stringify(users);
 }
 module.exports.getUsers = getUsers;
 
+/**
+ * retorna todas as threads guardadas na base de dados e envia para o lado do cliente
+ * @param req - request
+ * @param res - result
+ */
 function getThreads(req, res) {
     
 	let user = new MongoClient(options.mongoDB.connectionString, {useUnifiedTopology: true});
@@ -89,28 +112,6 @@ function getThreads(req, res) {
 	
 }
 module.exports.getThreads = getThreads;
-
-function getCountries(req, res) {  
-	let user = new MongoClient(options.mongoDB.connectionString, {useUnifiedTopology: true});
-    user.connect(function (err) {
-        if (err) {
-            res.json({"message": "error", "error": err });
-        } else {
-            
-            let collection = user.db('Project').collection("Country");
-
-            collection.find({}, {name:1, img_src:1, description:1}).toArray(function(err, documents) {
-                if (err) {
-                    res.json({"message": "error", "error": err });
-                } else {
-                    res.json({"message": "success", "country": documents });
-                }	
-                user.close();
-                return documents;
-            });
-        }
-    });	
-}
 
 /**
  * Função para adicionar ou atualizar uma pessoa à BD
@@ -215,6 +216,11 @@ function createThread(req, res){
 
 module.exports.createThread = createThread;
 
+/**
+ * Dá update numa thread, adiciona uma reply
+ * @param {*} req 
+ * @param {*} res 
+ */
 function updateThread(req, res){
     let user = getMongoDbClient();
 
@@ -258,6 +264,11 @@ function updateThread(req, res){
 
 module.exports.updateThread = updateThread;
 
+/**
+ * returna um user que está logged in
+ * @param {*} req 
+ * @param {*} res 
+ */
 function getUser(req, res){
     let user = getMongoDbClient();
 
@@ -286,6 +297,11 @@ function getUser(req, res){
 
 module.exports.getUser = getUser;
 
+/**
+ * dá update num user
+ * @param {*} req 
+ * @param {*} res 
+ */
 function updateUser(req, res){
     let user = getMongoDbClient();
 
