@@ -69,7 +69,7 @@ function getThreads(req, res) {
             
             let collection = user.db('Project').collection("Thread");
 
-            collection.find({}, {_id:1, name:1, text:1, date:1, user:1, replies:1}).toArray(function(err, documents) {
+            collection.find({}, {_id:1, name:1, text:1, date:1, user:1}).toArray(function(err, documents) {
 
                 if (err) {
 
@@ -188,7 +188,7 @@ function createThread(req, res){
                     text: req.body.text,
                     date: new Date().toISOString().slice(0,10),
                     user: req.user,
-                    replies: 0
+                    replies: []
                 },
                 {
                     multi: false,
@@ -214,3 +214,46 @@ function createThread(req, res){
 }
 
 module.exports.createThread = createThread;
+
+function updateThread(req, res){
+    let user = getMongoDbClient();
+
+    user.connect(function (err) {
+
+        if (err) {
+
+            res.json({"message": "error", "error": err});
+
+        } else {
+            let collection = user.db('Project').collection('Thread');
+            collection.update(
+                {
+                    _id: new ObjectID(req.body.id)
+                },
+                { 
+                    $addToSet: {
+                        replies: {creationDate: new Date().toISOString().slice(0,10), text: req.body.text, user: req.user}
+                    }
+                },
+                {
+                    multi: false,
+                    upsert: true
+                },
+                function(err, response) {
+
+                    if(err) {
+                        res.sendStatus(404);
+
+                    } else {
+                        res.send({n: 1, nModified: 1, ok: 1, user: req.user, date: new Date().toISOString().slice(0,10)});
+                    }
+            
+                    user.close();
+                }
+            )
+        }
+
+    })
+}
+
+module.exports.updateThread = updateThread;

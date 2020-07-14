@@ -154,3 +154,17 @@ function showAddThread(){
      document.getElementById("forum").style.display = "none"
 }
 
+function showThreadsDiv(){
+    document.getElementById("createThread").style.display = "none";
+    document.getElementsByClassName("introduction_f")[0].style.display = "none";
+    document.getElementById("forum").style.display = "block";
+    document.getElementById("reply_thread").style.display = "none";
+}
+
+function showReplies(){
+    document.getElementById("createThread").style.display = "none";
+    document.getElementsByClassName("introduction_f")[0].style.display = "none";
+    document.getElementById("forum").style.display = "none";
+    document.getElementById("reply_thread").style.display = "block";
+}
+

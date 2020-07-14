@@ -17,7 +17,7 @@ function getUsersInfo(){
  */
 window.onload = function (event) {
     const info = new Information();
-    window.info = info;
     info.importUsers();
     info.importThreads();
+    window.info = info;
 };

@@ -19,6 +19,6 @@ function Thread(id, name, creationDate, text, user, replies){
     this.replies = replies;
 }
 
-function addReply(reply){
+Thread.prototype.addReply = function (reply){
     this.replies.push(reply);
 }

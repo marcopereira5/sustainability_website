@@ -40,16 +40,16 @@ Information.prototype.processAddUser = function () {
 }
 
 Information.prototype.importUsers = function () {
-    var users = this.users;
+    const self = this;
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "/users", true);
 
     xhr.onreadystatechange = function() {
         if ((this.readyState == 4) && (this.status == 200)){
             var response = JSON.parse(xhr.responseText);
-            console.log(response.user);
             response.user.forEach(element => {
-                users.push(new User(element._id, element.username, element.email, element.password));
+                console.log(element);
+                self.users.push(new User(element._id, element.name, element.email, element.password));
             });
         }
     }
@@ -96,6 +96,9 @@ Information.prototype.loginUser = function () {
     xhr.onreadystatechange = function() {
         console.log(this);
         if ((this.readyState == 4) && (this.status == 200)){
+            window.onload = function(){
+
+            }
             window.location = "/";
         } else if ((this.readyState == 4) && (this.status == 401)){
             var alert = document.getElementById("alert");
@@ -119,7 +122,7 @@ Information.prototype.addThread = function () {
 
     xhr.onreadystatechange = function() {
         if ((this.readyState == 4) && (this.status == 200)){
-            console.log(JSON.parse(xhr.responseText));
+            window.location = "/forum";
         }
     }
 
@@ -128,7 +131,7 @@ Information.prototype.addThread = function () {
 }
 
 Information.prototype.importThreads = function () {
-    var threads = this.threads;
+    const self = this;
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "/threads");
 
@@ -136,23 +139,85 @@ Information.prototype.importThreads = function () {
         if ((this.readyState == 4) && (this.status == 200)){
             var response = JSON.parse(xhr.responseText);
             response.thread.forEach(element => {
-                threads.push(new Thread(element._id, element.name, element.date, element.text, element.user, element.replies));
+                self.threads.push(new Thread(element._id, element.name, element.date, element.text, element.user, element.replies));
             });
         }
+
+        console.log(self.threads);
     }
 
     xhr.send();
 }
 
-function showThreads() {
-    this.importThreads();
+Information.prototype.showThreads = function() {
     var tbody = document.getElementById("t_threads");
 
-    console.log(this.threads);
+    tbody.innerHTML = "";
 
     this.threads.forEach(element =>{
         tbody.innerHTML += "<tr> <th scope='row'>" + element.name + "</th> <td>" + element.creationDate + "</td>"
-        + "<td>" + element.text + "</td> <td>" + element.replies + "</td> </tr>";
+        + "<td>" + element.text + "</td> <td>" + element.replies.length + "</td> <td> <button class='btn btn-primary' onclick='javascript:info.replyThread(\"" + element.id +"\");showReplies()'> Reply </button> </td> </tr>" ;
     });
+}
+
+Information.prototype.replyThread = function(id){
+    var thread;
+    var user;
+
+    document.getElementById("forum").style.display = "none";
+
+    this.threads.forEach(element => {
+        if (element.id == id){
+            thread = element;
+        }
+    });
+
+    this.users.forEach(element => {
+        if (element.id == thread.user.id){
+            user = element;
+        }
+    });
+
+    var table_cell = document.getElementById("t_replies");
+
+    console.log(user);
+
+    table_cell.innerHTML = "<tr> <th scope='row'> <p>Thread Name: " + thread.name + "</p><p>Creation Date: " + thread.creationDate + "</p><p>User name: " + user.name + "</p></th>" +
+    "<td>" + thread.text + "</td></tr>";
+
+    console.log(thread.replies);
+    
+    thread.replies.forEach(element =>{
+        table_cell.innerHTML += "<tr> <th scope='row'> <p>Date: " + element.creationDate + "</p><p>User: " + element.user.username + "</p></th>" +
+        "<td>" + element.text + "</td></tr>";
+    });
+
+    document.getElementById("button_r").innerHTML = '<button class="btn btn-primary" onclick="javascript:info.addReply(\'' + id + '\')">Submit</button>'
+}
+
+Information.prototype.addReply = function(id){
+    var thread;
+    var text = document.getElementById("text_r").value;
+
+    this.threads.forEach(element => {
+        if (element.id == id){
+            thread = element;
+        }
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", "/threads");
+    const self = this;
+
+    xhr.onreadystatechange = function() {
+        if ((this.readyState == 4) && (this.status == 200)){
+            var response = JSON.parse(xhr.responseText);
+            thread.addReply(new Reply(Math.random(), response.date, text, response.user));
+            self.replyThread(id);
+        }
+    }
+
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({"text": text, "id": id}));
 }
 

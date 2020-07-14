@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum</title>
 
+    <script src="scripts/reply.js"></script>
     <script src="scripts/thread.js"></script>
     <script src="scripts/user.js"></script>
     <script src="scripts/information.js"></script>
@@ -18,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body id="forum_b" onload="showThreads()">
+<body id="forum_b">
     <header id="header_f">
         <a href="/">
             <img src="images/MainIcon.png" alt="Logo" class = "logo" height="60" width="60">
@@ -26,6 +27,14 @@
         <label for="toggle" class="labelResponsive">&#9776;</label>
         <input type="checkbox" id="toggle">
     </header>
+
+    <main class = "introduction_f">
+        <h1>Welcome to the Sustainability Forum</h1>
+        <h3>Click the button</h3>
+        <a>
+            <button class="btn btn-primary" onclick="showThreadsDiv();javascript:info.showThreads()">Forum</button>
+        </a>
+    </main>
 
     <main id="forum">
         <table>
@@ -35,13 +44,14 @@
               </tr>
         </table>
 
-        <table class="table table-hover">
+        <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Date</th>
                 <th scope="col">Description</th>
                 <th scope="col">Replies</th>
+                <th scope="col">Reply</th>
               </tr>
             </thead>
             <tbody id="t_threads">
@@ -51,9 +61,10 @@
     </main>
 
     <main id="createThread">
-            <div class="cotainer">
+            <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
+                        <button type="button" class="btn btn-primary" id="back" onclick="showThreadsDiv()">Back</button>
                             <div class="card">
                                 <div class="card-header">Add Thread</div>
                                 <div class="card-body">
@@ -73,8 +84,8 @@
                                         </div>
         
                                         <div class="col-md-6 offset-md-4">
-                                            <button type="button" class="btn btn-primary" onclick="javascript:info.addThread()">
-                                             Register
+                                            <button type="button" class="btn btn-primary" onclick="javascript:info.addThread();showThreadsDiv();javascript:info.showThreads();">
+                                             Add Thread
                                             </button>
                                         </div>
                                         </div>
@@ -84,6 +95,39 @@
                     </div>
                 </div>
             </div>
+    </main>
+
+    <main id="reply_thread">
+        <button type="button" class="btn btn-primary" id="back" onclick="javascript:info.showThreads();showThreadsDiv()">Back</button>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Author</th>
+                <th scope="col" style="min-width: 130px;">Text</th>
+              </tr>
+            </thead>
+            <tbody id="t_replies">
+              
+            </tbody>
+          </table>
+
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="text_a">Reply to this post:</label>
+                        <textarea class="form-control" id="text_r" rows="5"></textarea>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td id="button_r">
+                    
+                </td>
+              </tr>
+            </tbody>
+          </table>
     </main>
 
 </body>

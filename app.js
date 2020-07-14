@@ -44,6 +44,8 @@ app.get("/forum", checkAuthenticated, function (req, res){
     res.sendFile(path.join(__dirname + '/www/forum.html'));
 });
 
+app.put("/threads", requestHandlers.updateThread);
+
 app.post("/threads", requestHandlers.createThread);
 
 app.get("/threads", requestHandlers.getThreads)
