@@ -131,7 +131,7 @@ function createUpdateUser(req, res){
             let collection = user.db('Project').collection('User');
             collection.update(
                 {
-                    _id: new ObjectID(req.method == 'PUT' ? req.body.id : null)
+                    _id: new ObjectID(req.method == 'PUT' ? req.user.id : null)
                 },
                 {
                     name: req.body.name,

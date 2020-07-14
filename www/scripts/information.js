@@ -39,6 +39,63 @@ Information.prototype.processAddUser = function () {
     xhr.send(JSON.stringify(newUser));
 }
 
+
+Information.prototype.processUpdateUser = function () {
+    var new_username = document.getElementById("new_username").value;
+    var new_password = document.getElementById("new_password").value;
+    var conf_password = document.getElementById("conf_password").value;
+    var alert = document.getElementById("alert2");
+
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
+
+    if(new_username){
+        if(new_password && new_password==conf_password){
+            alert.textContent = "Username and password changed!";
+            alert.style.color = "green";
+            alert.style.textAlign = "center"; 
+            xhr.open('PUT', '/Users/');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({"name": new_username, "password": new_password}));  
+
+        }else if(new_password && new_password!=conf_password){
+            alert.textContent = "Passwords don't match";
+            alert.style.color = "red";
+            alert.style.textAlign = "center"; 
+        }else{
+            alert.textContent = "Username changed!";
+            alert.style.color = "green";
+            alert.style.textAlign = "center";
+            xhr.open('PUT', '/Users/');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({"name": new_username}));
+        }
+
+    }else{
+        if(new_password && new_password==conf_password){
+            alert.textContent = "Password changed!";
+            alert.style.color = "green";
+            alert.style.textAlign = "center";
+            xhr.open('PUT', '/Users/');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({"password": new_password}));
+        }else if(new_password && new_password!=conf_password){
+            alert.textContent = "Passwords don't match";
+            alert.style.color = "red";
+            alert.style.textAlign = "center"; 
+        }
+    }
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            window.location = "/logged";
+        }
+    }
+    xhr.open('PUT', '/Users/');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({"name": username, "password": password}));
+}
+
 Information.prototype.importUsers = function () {
     var users = this.users;
     var xhr = new XMLHttpRequest();
@@ -96,7 +153,7 @@ Information.prototype.loginUser = function () {
     xhr.onreadystatechange = function() {
         console.log(this);
         if ((this.readyState == 4) && (this.status == 200)){
-            window.location = "/";
+            window.location = "/logged";
         } else if ((this.readyState == 4) && (this.status == 401)){
             var alert = document.getElementById("alert");
             alert.textContent = "Please input a valid combination";
@@ -155,4 +212,3 @@ function showThreads() {
         + "<td>" + element.text + "</td> <td>" + element.replies + "</td> </tr>";
     });
 }
-

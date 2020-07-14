@@ -21,10 +21,6 @@ if ('scrollRestoration' in history) {
 
 
 function startPage(){
-    console.log("Login está a " + login);
-    if(login){
-        afterLogin();
-    }
     for(var i = 0; i < pages.length; i++){
         if(pages[i].className != 'introduction'){
             pages[i].style.display = 'none'; 
@@ -112,6 +108,23 @@ function showUni(){
     mainPage.className = '';
 }
 
+function showEdit(){
+    for(var i = 0; i < pages.length; i++){
+        if(pages[i].className=='edit'){
+            pages[i].style.display = 'block';
+            pages[i].style.backgroundImage = 'none';
+            t1.fromTo(pages[i], 1, {opacity: "0"}, {opacity: "1"});
+        }else{
+            pages[i].style.display = 'none'; 
+        }
+    }
+    mainPage.className = '';
+}
+
+function showForum(){
+    window.location = "/forum";
+}
+
 function showLogin(){
     window.location = "/login";
 }
@@ -120,24 +133,11 @@ function showRegisterPage(){
     window.location = "/register";
 }
 
-function afterLogin(){
-    var btn = document.getElementById('btn_login');
-    console.log("Entrei no afterLogin");
-    btn.onclick = showDefinition;
-    btn.value = 'Learn more';
-    var reg = document.getElementById('reg');
-    reg.innerHTML = 'Community';
-    reg.onclick = showThreads;
-}
-
 function handleMail(){
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var message = document.getElementById('message').value;
     var alert = document.getElementById("alert");
-            alert.textContent = "Please input a valid combination";
-            alert.style.color = "red";
-            alert.style.textAlign = "center";
     if(!name){
         alert.textContent = "Invalid name";
         alert.style.color = "red";
@@ -181,11 +181,3 @@ function showAddThread(){
      document.getElementById("forum").style.display = "none"
 }
 
-function setLogin(){
-    if(login){
-        login = false;
-    }else{
-        login = true;
-    }
-    console.log(" BRUUHHHHHHH Login está a " + login);
-}
