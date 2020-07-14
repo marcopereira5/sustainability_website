@@ -36,8 +36,8 @@
         </nav>
     </header>
     <main class = "introduction">
-        <h1 style="margin-bottom: 40.2px;">Sustainability</h1>
-        <h3 style="margin-bottom: 20px;">A simple explanation</h3>
+        <h1 style="margin-bottom: 40.2px;" id="name_i">Sustainability</h1>
+        <h3 style="margin-bottom: 20px;">Click to learn more</h3>
         <a>
             <button id="btn_login" onclick="showDefinition()">Learn more</button>
         </a>
@@ -275,20 +275,18 @@
                 <legend class="">Edit Profile</legend>
               </div>
               <div class="control-group">
-                <label class="control-label"  for="cur_username">Current Username:</label>
-                <p class="font-weight-bold" id="cur_username"></p>
-              </div>
-              <div class="control-group">
                 <label class="control-label"  for="new_username">New Username</label>
                 <div class="controls">
                   <input type="text" id="new_username" name="new_username" placeholder="" class="input-xlarge">
                   <p class="help-block">Username can contain any letters or numbers, without spaces</p>
                 </div>
               </div>
-           
               <div class="control-group">
-                <label class="control-label" for="email">E-mail:</label>
-                <p class="font-weight-bold" id="email"></p>
+                <label class="control-label"  for="new_email">New email</label>
+                <div class="controls">
+                  <input type="text" id="new_email" name="new_email" class="input-xlarge">
+                  <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+                </div>
               </div>
               <div class="control-group">
                 <label class="control-label" for="new_password"> New Password</label>
@@ -297,16 +295,11 @@
                   <p class="help-block">Password should be at least 4 characters</p>
                 </div>
               </div>
-              <div class="control-group">
-                <label class="control-label" for="conf_password"> Confirm Password</label>
-                <div class="controls">
-                  <input type="password" id="conf_password" name="conf_password" placeholder="" class="input-xlarge">
-                </div>
-              </div>
               <p id='alert2'></p>
               <div class="control-group">
                 <div class="controls">
-                  <button type="button" class="btn" onclick="javascript:info.processUpdateUser()">Save Changes</button>
+                  <button type="button" class="btn" onclick="javascript:info.updateUser()">Save Changes</button>
+                  <button type="button" class="btn btn-danger" onclick="javascript:info.logout()">Logout</button>
                 </div>
               </div>
             </fieldset>

@@ -257,3 +257,79 @@ function updateThread(req, res){
 }
 
 module.exports.updateThread = updateThread;
+
+function getUser(req, res){
+    let user = getMongoDbClient();
+
+    user.connect(function (err) {
+
+        if (err) {
+
+            res.json({"message": "error", "error": err});
+
+        } else {
+            let collection = user.db('Project').collection('User');
+            if (req.user){
+                collection.find({name: req.user.username}, {name:1, email:1, password:1}).toArray(function(err, documents) {
+                    if (err) {
+                        res.json({"message": "error", "error": err });
+                    } else {
+                        res.json({"message": "success", "user": documents });
+                    }	
+                    user.close();
+                    return documents;
+                });
+            }
+        }
+    })
+}
+
+module.exports.getUser = getUser;
+
+function updateUser(req, res){
+    let user = getMongoDbClient();
+
+    console.log("Mano");
+
+    user.connect(function (err) {
+
+        if (err) {
+
+            res.json({"message": "error", "error": err});
+
+        } else {
+            let collection = user.db('Project').collection('User');
+            collection.update(
+                {
+                    _id: new ObjectID(req.body.id)
+                },
+                { 
+                    name: req.body.username,
+                    email: req.body.email,
+                    password: req.body.password
+                },
+                {
+                    multi: false,
+                    upsert: true
+                },
+                function(err, response) {
+
+                    if(err) {
+                        
+                        console.log(err);
+                        res.sendStatus(404);
+
+                    } else {
+                        console.log(response.result);
+                        res.send(response.result);
+                    }
+            
+                    user.close();
+                }
+            )
+        }
+
+    })
+}
+
+module.exports.updateUser = updateUser;

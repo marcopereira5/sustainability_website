@@ -274,3 +274,81 @@ Information.prototype.addReply = function(id){
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({"text": text, "id": id}));
 }
+
+Information.prototype.getUser = function(){
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/user");
+    const self = this;
+
+    xhr.onreadystatechange = function() {
+        if ((this.readyState == 4) && (this.status == 200)){
+            var a = JSON.parse(xhr.responseText);
+            console.log(a);
+            document.getElementById("name_i").textContent = "Hello " + a.user[0].name + "!";
+            document.getElementById("new_username").placeholder = a.user[0].name;
+            document.getElementById("new_email").placeholder = a.user[0].email;
+        }
+    }
+
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
+}
+
+Information.prototype.updateUser = function(){
+    var username = document.getElementById("new_username").value;
+    var email = document.getElementById("new_email").value;
+    var password = document.getElementById("new_password").value;
+    var id;
+    var user;
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", "/users");
+    const self = this;
+
+    xhr.onreadystatechange = function() {
+        console.log(this.readyState + " - " + this.status);
+        if ((this.readyState == 4) && (this.status == 200)){
+            user.name = username;
+            user.email = email;
+            user.password = password;
+            window.location.reload();
+        }
+    }
+
+    this.users.forEach(element =>{
+        if (element.name == document.getElementById("new_username").placeholder){
+            user = element;
+            id = element.id;
+        }
+    });
+
+    xhr.onreadystatechange = function() {
+        console.log(this.readyState + " - " + this.status);
+        if ((this.readyState == 4) && (this.status == 200)){
+            user.name = username;
+            user.email = email;
+            user.password = password;
+            window.location.reload();
+        }
+    }
+
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({"username": username, "email": email, "password": password, "id": id}));
+}
+
+Information.prototype.logout = function(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/logout");
+    const self = this;
+
+    xhr.onreadystatechange = function() {
+        console.log(this.readyState + " - " + this.status);
+        if ((this.readyState == 4) && (this.status == 200)){
+            window.location = "/";
+        }
+    }
+
+    xhr.send();
+}
+
