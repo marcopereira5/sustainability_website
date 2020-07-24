@@ -10,13 +10,17 @@ var pages = document.getElementsByTagName('main');
 var login;
 
 
-var t1 = new TimelineMax();
+try {
+    var t1 = new TimelineMax();
 
-t1.fromTo(mainPage, 1, {width: "0%"}, {width: "100%"}).fromTo(introduction, 1, {height: "200%"}, {height: "20%"})
-.fromTo(menu, 1.5, {opacity: "0"}, {opacity: "1"}).fromTo(toggle, 1, {opacity: "0"}, {opacity: "1"}, "-=1.5");
-startPage();
-if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
+    t1.fromTo(mainPage, 1, {width: "0%"}, {width: "100%"}).fromTo(introduction, 1, {height: "200%"}, {height: "20%"})
+    .fromTo(menu, 1.5, {opacity: "0"}, {opacity: "1"}).fromTo(toggle, 1, {opacity: "0"}, {opacity: "1"}, "-=1.5");
+    startPage();
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+} catch (e){
+
 }
 
 /**

@@ -71,6 +71,7 @@ module.exports.getPeople = getPeople;
 function getUsers(req, res) {
 	return JSON.stringify(users);
 }
+
 module.exports.getUsers = getUsers;
 
 /**
@@ -126,7 +127,6 @@ function createUpdateUser(req, res){
         if (err) {
 
             res.json({"message": "error", "error": err});
-            console.log(err);
 
         } else {
             let collection = user.db('Project').collection('User');
@@ -146,11 +146,9 @@ function createUpdateUser(req, res){
                 function(err, response) {
 
                     if(err) {
-
                         res.sendStatus(404);
 
                     } else {
-
                         res.send(response.result);
                     }
             
@@ -305,8 +303,6 @@ module.exports.getUser = getUser;
 function updateUser(req, res){
     let user = getMongoDbClient();
 
-    console.log("Mano");
-
     user.connect(function (err) {
 
         if (err) {
@@ -331,12 +327,9 @@ function updateUser(req, res){
                 function(err, response) {
 
                     if(err) {
-                        
-                        console.log(err);
                         res.sendStatus(404);
 
                     } else {
-                        console.log(response.result);
                         res.send(response.result);
                     }
             

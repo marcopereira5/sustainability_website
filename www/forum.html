@@ -26,8 +26,6 @@
         <a href="/logged">
             <img src="images/MainIcon.png" alt="Logo" class = "logo" height="60" width="60">
         </a>
-        <label for="toggle" class="labelResponsive">&#9776;</label>
-        <input type="checkbox" id="toggle">
     </header>
 
     <main class = "introduction_f">
@@ -41,25 +39,27 @@
     <main id="forum">
         <table>
             <tr>
-                <td><h1 class="display-1">Forum</h1></td>
+                <td id="h1_tb"><h1 class="display-1">Forum</h1></td>
                 <td id="btn_add"><button type="button" class="btn btn-primary btn-lg" id="addThread" onclick="showAddThread()">Add Thread</button></td>
               </tr>
         </table>
 
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Date</th>
-                <th scope="col">Description</th>
-                <th scope="col">Replies</th>
-                <th scope="col">Reply</th>
-              </tr>
-            </thead>
-            <tbody id="t_threads">
-              
-            </tbody>
-          </table>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Replies</th>
+                    <th scope="col">Reply</th>
+                  </tr>
+                </thead>
+                <tbody id="t_threads">
+                  
+                </tbody>
+              </table>
+        </div>
     </main>
 
     <main id="createThread">
@@ -105,7 +105,7 @@
             <thead>
               <tr>
                 <th scope="col">Author</th>
-                <th scope="col" style="min-width: 130px;">Text</th>
+                <th scope="col" >Text</th>
               </tr>
             </thead>
             <tbody id="t_replies">

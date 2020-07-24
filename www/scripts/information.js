@@ -31,21 +31,19 @@ Information.prototype.processAddUser = function () {
 
     const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
-    var newUser = new User(1, username, email, password);
+    var newUser = new User(null, username, email, password);
 
     const self = this;
 
     xhr.onreadystatechange = function () {
         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-            console.log(xhr.response);
             newUser = new User(xhr.response.upserted[0]._id, username, email, password);
             self.users.push(newUser);
             window.location = "/login";
         }
     }
-    xhr.open('POST', '/register/');
+    xhr.open('POST', '/register');
     xhr.setRequestHeader('Content-Type', 'application/json');
-    console.log(newUser);
     xhr.send(JSON.stringify(newUser));
 }
 
@@ -124,7 +122,6 @@ Information.prototype.importUsers = function () {
         if ((this.readyState == 4) && (this.status == 200)){
             var response = JSON.parse(xhr.responseText);
             response.user.forEach(element => {
-                console.log(element);
                 self.users.push(new User(element._id, element.name, element.email, element.password));
             });
         }
@@ -145,7 +142,6 @@ Information.prototype.loginUser = function () {
     xhr.responseType = 'json';
 
     xhr.onreadystatechange = function() {
-        console.log(this);
         if ((this.readyState == 4) && (this.status == 200)){
             window.location = "/logged";
         } else if ((this.readyState == 4) && (this.status == 401)){
@@ -193,13 +189,15 @@ Information.prototype.importThreads = function () {
 
     xhr.onreadystatechange = function() {
         if ((this.readyState == 4) && (this.status == 200)){
-            var response = JSON.parse(xhr.responseText);
-            response.thread.forEach(element => {
-                self.threads.push(new Thread(element._id, element.name, element.date, element.text, element.user, element.replies));
-            });
+            try {
+                var response = JSON.parse(xhr.responseText);
+                response.thread.forEach(element => {
+                    self.threads.push(new Thread(element._id, element.name, element.date, element.text, element.user, element.replies));
+                });
+            } catch (e) {
+                
+            }
         }
-
-        console.log(self.threads);
     }
 
     xhr.send();
@@ -246,12 +244,8 @@ Information.prototype.replyThread = function(id){
 
     var table_cell = document.getElementById("t_replies");
 
-    console.log(user);
-
     table_cell.innerHTML = "<tr> <th scope='row'> <p>Thread Name: " + thread.name + "</p><p>Creation Date: " + thread.creationDate + "</p><p>User name: " + user.name + "</p></th>" +
     "<td>" + thread.text + "</td></tr>";
-
-    console.log(thread.replies);
     
     thread.replies.forEach(element =>{
         table_cell.innerHTML += "<tr> <th scope='row'> <p>Date: " + element.creationDate + "</p><p>User: " + element.user.username + "</p></th>" +
@@ -299,11 +293,14 @@ Information.prototype.getUser = function(){
 
     xhr.onreadystatechange = function() {
         if ((this.readyState == 4) && (this.status == 200)){
-            var a = JSON.parse(xhr.responseText);
-            console.log(a);
-            document.getElementById("name_i").textContent = "Hello " + a.user[0].name + "!";
-            document.getElementById("new_username").placeholder = a.user[0].name;
-            document.getElementById("new_email").placeholder = a.user[0].email;
+            try{
+                var a = JSON.parse(xhr.responseText);
+                document.getElementById("name_i").textContent = "Hello " + a.user[0].name + "!";
+                document.getElementById("new_username").placeholder = a.user[0].name;
+                document.getElementById("new_email").placeholder = a.user[0].email;
+            } catch (e){
+                
+            }
         }
     }
 
@@ -323,7 +320,6 @@ Information.prototype.updateUser = function(){
     const self = this;
 
     xhr.onreadystatechange = function() {
-        console.log(this.readyState + " - " + this.status);
         if ((this.readyState == 4) && (this.status == 200)){
             user.name = username;
             user.email = email;
@@ -340,7 +336,6 @@ Information.prototype.updateUser = function(){
     });
 
     xhr.onreadystatechange = function() {
-        console.log(this.readyState + " - " + this.status);
         if ((this.readyState == 4) && (this.status == 200)){
             user.name = username;
             user.email = email;
@@ -359,7 +354,6 @@ Information.prototype.logout = function(){
     const self = this;
 
     xhr.onreadystatechange = function() {
-        console.log(this.readyState + " - " + this.status);
         if ((this.readyState == 4) && (this.status == 200)){
             window.location = "/";
         }

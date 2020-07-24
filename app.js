@@ -56,7 +56,7 @@ app.post("/threads", checkAuthenticated, requestHandlers.createThread);
 
 app.get("/threads", checkAuthenticated, requestHandlers.getThreads)
 
-app.post("/register", checkAuthenticated, requestHandlers.createUpdateUser);
+app.post("/register", checkNotAuthenticated, requestHandlers.createUpdateUser);
 
 app.post("/login",
     passport.authenticate('local'), 
